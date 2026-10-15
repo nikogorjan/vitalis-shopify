@@ -1,5 +1,5 @@
 {
-  "name": "aqmoi-skincare-theme",
+  "name": "vitalis-theme",
   "private": true,
   "scripts": {
     "dev": "shopify theme dev",

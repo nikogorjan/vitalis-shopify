@@ -1,4 +1,4 @@
-# aqmoi-skincare Shopify theme
+# Vitalis Shopify theme (aqmoi-home-2)
 
 Store: 0ck7y0-dz.myshopify.com
 Live theme: aqmoi-home-2 (#166250414178). Never push to live without asking.
