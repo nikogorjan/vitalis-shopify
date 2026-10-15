@@ -1,0 +1,11 @@
+{
+  "name": "aqmoi-skincare-theme",
+  "private": true,
+  "scripts": {
+    "dev": "shopify theme dev",
+    "push": "shopify theme push --development --nodelete",
+    "pull": "shopify theme pull --development",
+    "content:pull": "shopify theme pull -e content --live --only templates/*.json --only templates/customers/*.json --only sections/*.json --only config/settings_data.json --force",
+    "content:pull:dev": "shopify theme pull -e content --development --only templates/*.json --only templates/customers/*.json --only sections/*.json --only config/settings_data.json --force"
+  }
+}

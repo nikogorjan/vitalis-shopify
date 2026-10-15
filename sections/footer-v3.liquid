@@ -1,0 +1,599 @@
+
+
+{% comment %} Add padding bottom for toolbar mobile {% endcomment %}
+{% liquid
+  assign placeholder = 'newsletter.email' | t
+  assign template = template | split: '.' | first
+  if template != 'product'
+    assign pb_mobile = '--pb-mobile: 53px'
+  else
+    assign pb_mobile = ''
+  endif
+%}
+
+{% comment %} Sticky add cart is hidden when reach here {% endcomment %}
+<xo-sticky-hidden xo-name='sticky-addcart'></xo-sticky-hidden>
+<footer {% render 'section-attr', style: pb_mobile %}>
+  {% render 'section-bg-image' %}
+  <div class='footer-v33__top'>
+    <xo-container {% render 'section-layout' %}>
+      <xo-grid>
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'information' %}
+              <xo-animate xo-cascade style='--xs: 12; --sm: 6; --lg: 3'>
+                {%- if block.settings.logo != blank -%}
+                  <a href='/' class='footer-v33__logo'>
+                    {%- assign logo_alt = block.settings.logo.alt | default: shop.name | escape -%}
+                    {%- assign width = block.settings.logo_width %}
+                    {%- assign height = block.settings.logo_width | divided_by: block.settings.logo.aspect_ratio %}
+                    <img
+                      src='{{ block.settings.logo | image_url }}'
+                      alt='{{ logo_alt }}'
+                      style='width: {{ width }}px; height: {{ height }}px'
+                      height='auto'
+                      width='auto'
+                    >
+                  </a>
+                {%- endif -%}
+                <div class='footer-v33__description'>
+                  {{ block.settings.description }}
+                </div>
+                <ul role='list' class='footer-v33__information list-unstyled'>
+                  <li>{{ block.settings.address }}</li>
+                  <li>{{ block.settings.phone }}</li>
+                  <li>{{ block.settings.email }}</li>
+                </ul>
+                {%- if block.settings.show_social -%}
+                  <ul role='list' class='footer-v33__social list-unstyled'>
+                    <li>
+                      <a href='{{block.settings.social_link1}}' class='footer-v33__social-link' target='_blank'>{{ block.settings.social_icon1 }}</a>
+                    </li>
+                    <li>
+                      <a href='{{block.settings.social_link2}}' class='footer-v33__social-link' target='_blank'>{{ block.settings.social_icon2 }}</a>
+                    </li>
+                    <li>
+                      <a href='{{block.settings.social_link3}}' class='footer-v33__social-link' target='_blank'>{{ block.settings.social_icon3 }}</a>
+                    </li>
+                    <li>
+                      <a href='{{block.settings.social_link4}}' class='footer-v33__social-link' target='_blank'>{{ block.settings.social_icon4 }}</a>
+                    </li>
+                  </ul>
+                {%- endif -%}
+              </xo-animate>
+            {% when 'menu' %}
+              <xo-animate xo-cascade style='--xs: 12; --sm: 6; --lg: 3'>
+                {%- if block.settings.heading != blank -%}
+                  <h2 class='footer-v33__heading'>{{- block.settings.heading -}}</h2>
+                {%- endif -%}
+                {%- if block.settings.menu != blank -%}
+                  <ul role='list' class='list-unstyled'>
+                    {%- for link in block.settings.menu.links -%}
+                      <li class='footer-v33__list-item'>
+                        <a
+                          href='{{ link.url }}'
+                        >
+                          {{ link.title | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </xo-animate>
+          {% endcase %}
+        {% endfor %}
+      </xo-grid>
+    </xo-container>
+  </div>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'text' %}
+        <div class='footer-v33__newsletter'>
+          <xo-container {% render 'section-layout' %}>
+            <xo-animate xo-cascade>
+              <xo-grid>
+                <div style='--xs: 12; --lg: 7'>
+                  <xo-grid>
+                    <div class='footer-v33__newsletter-heading' style='--xs: 12; --lg: 7'>
+                      <span class='footer-v33__newsletter-icon'>{{ block.settings.icon }}</span>
+                      <h3 class='footer-v33__newsletter-title'>{{ block.settings.title }}</h3>
+                    </div>
+                    <div class='footer-v33__newsletter-subtitle' style='--xs: 12; --lg: 5'>{{ block.settings.subtitle }}</div>
+                  </xo-grid>
+                </div>
+                <div class='footer-v33__newsletter-form' style='--xs: 12; --lg: 5'>
+                  {%- form 'customer', id: 'ContactFooter', class: 'footer-v33__form' -%}
+                    <input type='hidden' name='contact[tags]' value='newsletter'>
+                    <div class='footer-v33__input-btn'>
+                      {% assign value = form.email %}
+                      {% capture attr %}
+                        aria-required='true'
+                        autocorrect='off'
+                        {% if form.errors %}
+                          autofocus
+                          aria-invalid='true'
+                          aria-describedby='ContactFooter-error'
+                        {% elsif form.posted_successfully? %}
+                          aria-describedby='ContactFooter-success'
+                        {% endif %}
+                        required
+                      {% endcapture %}
+                      {% render 'field-input', type: 'email', name: 'contact[email]', value: value, label: placeholder, attr: attr %}
+                      <button
+                        type='submit'
+                        class='footer-v33__email-button'
+                        name='commit'
+                        id='Subscribe'
+                        aria-label='{{ 'newsletter.button_label' | t }}'
+                      >
+                        <span class='footer-v33__text-before'>
+                          {{ 'newsletter.submit' | t }}
+                        </span>
+                        <span class='footer-v33__text-after'>
+                          {{ 'newsletter.submit' | t }}
+                        </span>
+                      </button>
+                    </div>
+                    {% render 'newsletter-form-message', form: form %}
+                  {%- endform -%}
+                </div>
+              </xo-grid>
+            </xo-animate>
+          </xo-container>
+        </div>
+    {% endcase %}
+  {% endfor %}
+  <xo-container {% render 'section-layout' %}>
+    <div class='footer-v33__bottom'>
+      <div class='footer-v33__copyright'>
+        {% if section.settings.copyright != blank %}
+          {{- section.settings.copyright -}}
+        {% else %}
+          <small class='footer-v33__copyright-content'>&copy; Copyright {{ 'now' | date: '%Y' }} | {{ shop.name | escape | link_to: routes.root_url -}}</small>
+          <small class='footer-v33__copyright-content'> By <a class='footer-v33__copyright-shopilaunch' href='https://shopilaunch.com/'> ShopiLaunch.</a> </small>
+          <small class='footer-v33__copyright-content footer-v33__copyright-content--black'>{{ powered_by_link }}.</small>
+        {% endif %}
+      </div>
+      <div class='footer-v33__payment'>
+        {% if section.settings.image_payment != blank %}
+          {% render 'image', image: section.settings.image_payment %}
+        {% endif %}
+      </div>
+    </div>
+  </xo-container>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer_v3.name",
+  "class": "section-footer",
+  "settings": [
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:sections.all.width.label",
+      "default": "box",
+      "options": [
+        {
+          "value": "box",
+          "label": "t:sections.all.width.options__1.label"
+        },
+        {
+          "value": "wide",
+          "label": "t:sections.all.width.options__2.label"
+        },
+        {
+          "value": "fullwidth",
+          "label": "t:sections.all.width.options__3.label"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "fullwidth_margin",
+      "label": "t:sections.all.fullwidth_margin.label",
+      "default": 0,
+      "visible_if": "{{ section.settings.width == 'fullwidth' }}"
+    },
+    {
+      "type": "liquid",
+      "id": "copyright",
+      "label": "t:sections.footer_v3.settings.copyright.label",
+      "default": " © Copyright {{ 'now' | date: '%Y' }} | <a href='http://engotheme.com' rel='nofollow' target='_blank' class='footer-v33__theme-name'>Engo-theme</a> By <a href='https://shopilaunch.com/' rel='nofollow' target='_blank' class='footer-v33__shop-name'> ShopiLaunch.</a><a href='https://shopify.pxf.io/9gPaY0' rel='nofollow' target='_blank' class='footer-v33__powered-shopify'> Powered by Shopify.</a>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_payment",
+      "label": "t:sections.footer_v3.settings.image_payment.label",
+      "info": "t:sections.footer_v3.settings.image_payment.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.heading.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "t:sections.all.background_type.label",
+      "options": [
+        {
+          "value": "color",
+          "label": "t:sections.all.background_type.option__1.label"
+        },
+        {
+          "value": "gradient",
+          "label": "t:sections.all.background_type.option__2.label"
+        },
+        {
+          "value": "image",
+          "label": "t:sections.all.background_type.option__3.label"
+        },
+        {
+          "value": "video",
+          "label": "t:sections.all.background_type.option__4.label"
+        }
+      ],
+      "default": "color"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.background_color.label",
+      "alpha": true,
+      "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.background_gradient.label",
+      "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "t:sections.all.background_image_desktop.label",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "t:sections.all.background_image_mobile.label",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_parallax",
+      "label": "t:sections.all.use_parallax.label",
+      "default": true,
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "select",
+      "id": "background_image_animation",
+      "label": "t:sections.all.animation.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.animation.option__0.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.all.animation.option__1.label"
+        },
+        {
+          "value": "fade-up",
+          "label": "t:sections.all.animation.option__2.label"
+        },
+        {
+          "value": "fade-down",
+          "label": "t:sections.all.animation.option__3.label"
+        },
+        {
+          "value": "fade-left",
+          "label": "t:sections.all.animation.option__4.label"
+        },
+        {
+          "value": "fade-right",
+          "label": "t:sections.all.animation.option__5.label"
+        },
+        {
+          "value": "zoom-in",
+          "label": "t:sections.all.animation.option__6.label"
+        },
+        {
+          "value": "zoom-out",
+          "label": "t:sections.all.animation.option__7.label"
+        },
+        {
+          "value": "rotate-left-up",
+          "label": "t:sections.all.animation.option__8.label"
+        },
+        {
+          "value": "rotate-right-up",
+          "label": "t:sections.all.animation.option__9.label"
+        },
+        {
+          "value": "snake-up",
+          "label": "t:sections.all.animation.option__10.label"
+        },
+        {
+          "value": "snake-down",
+          "label": "t:sections.all.animation.option__11.label"
+        },
+        {
+          "value": "snake-left",
+          "label": "t:sections.all.animation.option__12.label"
+        },
+        {
+          "value": "snake-right",
+          "label": "t:sections.all.animation.option__13.label"
+        },
+        {
+          "value": "3d-up",
+          "label": "t:sections.all.animation.option__14.label"
+        }
+      ],
+      "default": "none",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "textarea",
+      "id": "background_video_url",
+      "label": "t:sections.all.background_video_url.label",
+      "visible_if": "{{ section.settings.background_type == 'video' }}"
+    },
+    {
+      "type": "select",
+      "id": "background_video_animation",
+      "label": "t:sections.all.animation.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.animation.option__0.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.all.animation.option__1.label"
+        },
+        {
+          "value": "fade-up",
+          "label": "t:sections.all.animation.option__2.label"
+        },
+        {
+          "value": "fade-down",
+          "label": "t:sections.all.animation.option__3.label"
+        },
+        {
+          "value": "fade-left",
+          "label": "t:sections.all.animation.option__4.label"
+        },
+        {
+          "value": "fade-right",
+          "label": "t:sections.all.animation.option__5.label"
+        },
+        {
+          "value": "zoom-in",
+          "label": "t:sections.all.animation.option__6.label"
+        },
+        {
+          "value": "zoom-out",
+          "label": "t:sections.all.animation.option__7.label"
+        },
+        {
+          "value": "rotate-left-up",
+          "label": "t:sections.all.animation.option__8.label"
+        },
+        {
+          "value": "rotate-right-up",
+          "label": "t:sections.all.animation.option__9.label"
+        },
+        {
+          "value": "snake-up",
+          "label": "t:sections.all.animation.option__10.label"
+        },
+        {
+          "value": "snake-down",
+          "label": "t:sections.all.animation.option__11.label"
+        },
+        {
+          "value": "snake-left",
+          "label": "t:sections.all.animation.option__12.label"
+        },
+        {
+          "value": "snake-right",
+          "label": "t:sections.all.animation.option__13.label"
+        },
+        {
+          "value": "3d-up",
+          "label": "t:sections.all.animation.option__14.label"
+        }
+      ],
+      "default": "none",
+      "visible_if": "{{ section.settings.background_type == 'video' }}"
+    },
+    {
+      "type": "color",
+      "id": "background_overlay",
+      "label": "t:sections.all.background_overlay.label",
+      "alpha": true,
+      "visible_if": "{{ section.settings.background_type == 'image' or section.settings.background_type == 'video' }}"
+    },
+    {
+      "type": "number",
+      "id": "background_margin",
+      "label": "t:sections.all.background_margin.label",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "information",
+      "name": "t:sections.footer_v3.blocks.information.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "t:sections.footer_v3.blocks.information.settings.logo.label",
+          "info": "t:sections.footer_v3.blocks.information.settings.logo.info"
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "min": 50,
+          "max": 550,
+          "step": 5,
+          "unit": "px",
+          "label": "t:sections.footer_v3.blocks.information.settings.logo_width.label",
+          "default": 80
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "default": "Sed cursus turpis vitae tortor. Nunc nec neque. Fusce ac felis sit amet ligula pharetra…",
+          "label": "t:sections.footer_v3.blocks.information.settings.description.label"
+        },
+        {
+          "type": "text",
+          "id": "address",
+          "default": "Address: 1234 Heaven Stress,USA.",
+          "label": "t:sections.footer_v3.blocks.information.settings.address.label"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "default": "Phone: (+84) 1800 68 68",
+          "label": "t:sections.footer_v3.blocks.information.settings.phone.label"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "default": "Email: hello@domain.com",
+          "label": "t:sections.footer_v3.blocks.information.settings.email.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social",
+          "default": true,
+          "label": "t:sections.footer_v3.blocks.information.settings.show_social.label"
+        },
+        {
+          "type": "html",
+          "id": "social_icon1",
+          "label": "t:sections.footer_v3.blocks.information.settings.social_icon1.label",
+          "default": "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 150 150\" style=\"enable-background:new 0 0 150 150;\" height=\"1em\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n  <g>\n   <path d=\"M131.95,12.84c-5.03,5.87-10.06,11.74-15.1,17.6c-9.93,11.54-19.88,23.07-29.81,34.6c-0.11,0.12-0.2,0.25-0.37,0.47\n     c16.38,23.8,32.77,47.61,49.27,71.57c-0.51,0.03-0.84,0.07-1.18,0.07c-11.35,0-22.7-0.01-34.06,0.02c-0.78,0-1.22-0.24-1.67-0.89\n     c-10.58-15.41-21.18-30.79-31.78-46.18c-0.25-0.36-0.51-0.71-0.82-1.14c-2.93,3.39-5.79,6.7-8.64,10.01\n     c-10.7,12.42-21.41,24.84-32.09,37.28c-0.59,0.68-1.18,0.94-2.07,0.92c-3.07-0.05-6.15-0.02-9.54-0.02\n     c15.95-18.51,31.74-36.82,47.57-55.19c-2.56-3.72-5.09-7.41-7.63-11.1C40.93,51.86,27.85,32.87,14.78,13.88\n     c-0.22-0.33-0.38-0.7-0.57-1.04c12.08,0,24.16,0,36.25,0c0.08,0.14,0.15,0.28,0.24,0.42c10.22,14.85,20.44,29.71,30.67,44.56\n     c0.13,0.19,0.29,0.36,0.5,0.6c0.35-0.38,0.66-0.68,0.94-1.01c11.76-13.64,23.51-27.27,35.26-40.92c1.02-1.18,1.96-2.43,2.94-3.64\n     C124.65,12.84,128.3,12.84,131.95,12.84z M121.13,129.4c-0.24-0.4-0.34-0.58-0.45-0.74C95.71,93.01,70.74,57.36,45.74,21.73\n     c-0.3-0.43-1.04-0.77-1.58-0.77c-4.78-0.06-9.57-0.04-14.35-0.03c-0.26,0-0.53,0.03-0.99,0.06c0.4,0.59,0.68,1.02,0.97,1.44\n     c8.98,12.82,17.97,25.65,26.95,38.47c15.78,22.53,31.57,45.06,47.33,67.61c0.48,0.68,0.97,0.93,1.78,0.92\n     c4.66-0.04,9.32-0.02,13.99-0.02C120.2,129.4,120.55,129.4,121.13,129.4\"></path>\n  </g>\n</svg>"
+        },
+        {
+          "type": "url",
+          "id": "social_link1",
+          "label": "t:sections.footer_v3.blocks.information.settings.social_link1.label",
+          "default": "/collections/all"
+        },
+        {
+          "type": "html",
+          "id": "social_icon2",
+          "label": "t:sections.footer_v3.blocks.information.settings.social_icon2.label",
+          "default": "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 150 150\" style=\"enable-background:new 0 0 150 150;\" height=\"1em\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n  <g>\n   <path d=\"M131.95,12.84c-5.03,5.87-10.06,11.74-15.1,17.6c-9.93,11.54-19.88,23.07-29.81,34.6c-0.11,0.12-0.2,0.25-0.37,0.47\n     c16.38,23.8,32.77,47.61,49.27,71.57c-0.51,0.03-0.84,0.07-1.18,0.07c-11.35,0-22.7-0.01-34.06,0.02c-0.78,0-1.22-0.24-1.67-0.89\n     c-10.58-15.41-21.18-30.79-31.78-46.18c-0.25-0.36-0.51-0.71-0.82-1.14c-2.93,3.39-5.79,6.7-8.64,10.01\n     c-10.7,12.42-21.41,24.84-32.09,37.28c-0.59,0.68-1.18,0.94-2.07,0.92c-3.07-0.05-6.15-0.02-9.54-0.02\n     c15.95-18.51,31.74-36.82,47.57-55.19c-2.56-3.72-5.09-7.41-7.63-11.1C40.93,51.86,27.85,32.87,14.78,13.88\n     c-0.22-0.33-0.38-0.7-0.57-1.04c12.08,0,24.16,0,36.25,0c0.08,0.14,0.15,0.28,0.24,0.42c10.22,14.85,20.44,29.71,30.67,44.56\n     c0.13,0.19,0.29,0.36,0.5,0.6c0.35-0.38,0.66-0.68,0.94-1.01c11.76-13.64,23.51-27.27,35.26-40.92c1.02-1.18,1.96-2.43,2.94-3.64\n     C124.65,12.84,128.3,12.84,131.95,12.84z M121.13,129.4c-0.24-0.4-0.34-0.58-0.45-0.74C95.71,93.01,70.74,57.36,45.74,21.73\n     c-0.3-0.43-1.04-0.77-1.58-0.77c-4.78-0.06-9.57-0.04-14.35-0.03c-0.26,0-0.53,0.03-0.99,0.06c0.4,0.59,0.68,1.02,0.97,1.44\n     c8.98,12.82,17.97,25.65,26.95,38.47c15.78,22.53,31.57,45.06,47.33,67.61c0.48,0.68,0.97,0.93,1.78,0.92\n     c4.66-0.04,9.32-0.02,13.99-0.02C120.2,129.4,120.55,129.4,121.13,129.4\"></path>\n  </g>\n</svg>"
+        },
+        {
+          "type": "url",
+          "id": "social_link2",
+          "label": "t:sections.footer_v3.blocks.information.settings.social_link2.label",
+          "default": "/collections/all"
+        },
+        {
+          "type": "html",
+          "id": "social_icon3",
+          "label": "t:sections.footer_v3.blocks.information.settings.social_icon3.label",
+          "default": "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 150 150\" style=\"enable-background:new 0 0 150 150;\" height=\"1em\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n  <g>\n   <path d=\"M131.95,12.84c-5.03,5.87-10.06,11.74-15.1,17.6c-9.93,11.54-19.88,23.07-29.81,34.6c-0.11,0.12-0.2,0.25-0.37,0.47\n     c16.38,23.8,32.77,47.61,49.27,71.57c-0.51,0.03-0.84,0.07-1.18,0.07c-11.35,0-22.7-0.01-34.06,0.02c-0.78,0-1.22-0.24-1.67-0.89\n     c-10.58-15.41-21.18-30.79-31.78-46.18c-0.25-0.36-0.51-0.71-0.82-1.14c-2.93,3.39-5.79,6.7-8.64,10.01\n     c-10.7,12.42-21.41,24.84-32.09,37.28c-0.59,0.68-1.18,0.94-2.07,0.92c-3.07-0.05-6.15-0.02-9.54-0.02\n     c15.95-18.51,31.74-36.82,47.57-55.19c-2.56-3.72-5.09-7.41-7.63-11.1C40.93,51.86,27.85,32.87,14.78,13.88\n     c-0.22-0.33-0.38-0.7-0.57-1.04c12.08,0,24.16,0,36.25,0c0.08,0.14,0.15,0.28,0.24,0.42c10.22,14.85,20.44,29.71,30.67,44.56\n     c0.13,0.19,0.29,0.36,0.5,0.6c0.35-0.38,0.66-0.68,0.94-1.01c11.76-13.64,23.51-27.27,35.26-40.92c1.02-1.18,1.96-2.43,2.94-3.64\n     C124.65,12.84,128.3,12.84,131.95,12.84z M121.13,129.4c-0.24-0.4-0.34-0.58-0.45-0.74C95.71,93.01,70.74,57.36,45.74,21.73\n     c-0.3-0.43-1.04-0.77-1.58-0.77c-4.78-0.06-9.57-0.04-14.35-0.03c-0.26,0-0.53,0.03-0.99,0.06c0.4,0.59,0.68,1.02,0.97,1.44\n     c8.98,12.82,17.97,25.65,26.95,38.47c15.78,22.53,31.57,45.06,47.33,67.61c0.48,0.68,0.97,0.93,1.78,0.92\n     c4.66-0.04,9.32-0.02,13.99-0.02C120.2,129.4,120.55,129.4,121.13,129.4\"></path>\n  </g>\n</svg>"
+        },
+        {
+          "type": "url",
+          "id": "social_link3",
+          "label": "t:sections.footer_v3.blocks.information.settings.social_link3.label",
+          "default": "/collections/all"
+        },
+        {
+          "type": "html",
+          "id": "social_icon4",
+          "label": "t:sections.footer_v3.blocks.information.settings.social_icon4.label",
+          "default": "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 150 150\" style=\"enable-background:new 0 0 150 150;\" height=\"1em\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n  <g>\n   <path d=\"M131.95,12.84c-5.03,5.87-10.06,11.74-15.1,17.6c-9.93,11.54-19.88,23.07-29.81,34.6c-0.11,0.12-0.2,0.25-0.37,0.47\n     c16.38,23.8,32.77,47.61,49.27,71.57c-0.51,0.03-0.84,0.07-1.18,0.07c-11.35,0-22.7-0.01-34.06,0.02c-0.78,0-1.22-0.24-1.67-0.89\n     c-10.58-15.41-21.18-30.79-31.78-46.18c-0.25-0.36-0.51-0.71-0.82-1.14c-2.93,3.39-5.79,6.7-8.64,10.01\n     c-10.7,12.42-21.41,24.84-32.09,37.28c-0.59,0.68-1.18,0.94-2.07,0.92c-3.07-0.05-6.15-0.02-9.54-0.02\n     c15.95-18.51,31.74-36.82,47.57-55.19c-2.56-3.72-5.09-7.41-7.63-11.1C40.93,51.86,27.85,32.87,14.78,13.88\n     c-0.22-0.33-0.38-0.7-0.57-1.04c12.08,0,24.16,0,36.25,0c0.08,0.14,0.15,0.28,0.24,0.42c10.22,14.85,20.44,29.71,30.67,44.56\n     c0.13,0.19,0.29,0.36,0.5,0.6c0.35-0.38,0.66-0.68,0.94-1.01c11.76-13.64,23.51-27.27,35.26-40.92c1.02-1.18,1.96-2.43,2.94-3.64\n     C124.65,12.84,128.3,12.84,131.95,12.84z M121.13,129.4c-0.24-0.4-0.34-0.58-0.45-0.74C95.71,93.01,70.74,57.36,45.74,21.73\n     c-0.3-0.43-1.04-0.77-1.58-0.77c-4.78-0.06-9.57-0.04-14.35-0.03c-0.26,0-0.53,0.03-0.99,0.06c0.4,0.59,0.68,1.02,0.97,1.44\n     c8.98,12.82,17.97,25.65,26.95,38.47c15.78,22.53,31.57,45.06,47.33,67.61c0.48,0.68,0.97,0.93,1.78,0.92\n     c4.66-0.04,9.32-0.02,13.99-0.02C120.2,129.4,120.55,129.4,121.13,129.4\"></path>\n  </g>\n</svg>"
+        },
+        {
+          "type": "url",
+          "id": "social_link4",
+          "label": "t:sections.footer_v3.blocks.information.settings.social_link4.label",
+          "default": "/collections/all"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "t:sections.footer_v3.blocks.menu.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "t:sections.footer_v3.blocks.menu.settings.heading.label"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "t:sections.footer_v3.blocks.menu.settings.menu.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.footer_v3.blocks.text.name",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "t:sections.footer_v3.blocks.text.settings.icon.label",
+          "default": "<svg id=\"Capa_1\" enable-background=\"new 0 0 512 512\" height=\"512\" viewbox=\"0 0 512 512\" width=\"512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m512 203.06v-.045c0-.427-.024-.85-.059-1.271-.01-.115-.025-.229-.037-.344-.036-.33-.082-.657-.139-.981-.021-.122-.042-.244-.066-.365-.08-.395-.171-.787-.282-1.172-.011-.038-.02-.077-.031-.115-.117-.394-.253-.781-.401-1.163-.056-.146-.118-.289-.179-.434-.109-.258-.226-.513-.35-.764-.072-.146-.141-.293-.217-.437-.187-.351-.386-.695-.6-1.031-.08-.125-.168-.245-.252-.368-.167-.245-.34-.485-.521-.719-.097-.125-.194-.249-.295-.372-.263-.319-.535-.631-.825-.928-.023-.023-.045-.047-.068-.07-.31-.315-.64-.612-.979-.9-.042-.036-.078-.076-.121-.111l-25.578-21.225v-65.229c0-19.299-15.701-35-35-35h-85.776l-69.1-57.345c-20.354-16.888-49.896-16.888-70.248 0l-69.1 57.344h-85.776c-19.299 0-35 15.701-35 35v65.229l-25.579 21.228c-.042.035-.079.075-.121.111-.339.288-.669.585-.979.9-.023.023-.045.047-.068.07-.289.297-.562.609-.825.928-.101.122-.198.247-.295.372-.181.235-.354.475-.521.719-.084.123-.172.243-.252.368-.214.335-.413.679-.6 1.031-.077.144-.146.291-.217.437-.124.251-.24.506-.35.764-.061.144-.123.288-.179.434-.148.382-.285.768-.401 1.163-.011.038-.02.076-.031.115-.111.385-.202.777-.282 1.172-.024.122-.045.243-.066.365-.057.324-.103.651-.139.981-.012.115-.027.229-.037.344-.034.419-.058.842-.058 1.269v.045.008 253.927c0 15.718 6.638 29.906 17.246 39.939.301.301.603.599.925.87 9.757 8.814 22.676 14.19 36.829 14.19h402c14.154 0 27.074-5.377 36.832-14.193.319-.27.619-.565.918-.864 10.61-10.033 17.25-24.223 17.25-39.943v-253.926c0-.002 0-.005 0-.008zm-446-103.045h380c2.757 0 5 2.243 5 5v116.682l-8.488 7.044-170.546 141.533c-9.251 7.677-22.681 7.676-31.932 0l-170.546-141.532-8.488-7.045v-116.682c0-2.757 2.243-5 5-5zm-36 356.98v-222.04l6.452 5.355c.004.003.008.007.012.01l146.469 121.551-151.397 103.752c-.993-2.69-1.536-5.597-1.536-8.628zm176.937-75.204 13.939 11.568c20.352 16.89 49.896 16.889 70.248 0l13.939-11.568 146.22 100.204h-390.567zm122.13-19.919 146.468-121.552c.004-.003.008-.007.012-.01l6.452-5.355v222.04c0 3.031-.543 5.938-1.536 8.628zm-89.033-326.114c9.251-7.677 22.681-7.677 31.932 0l41.281 34.258h-114.494z\"></path><path d=\"m131.5 164.995c0 8.284 6.716 15 15 15h142c8.284 0 15-6.716 15-15s-6.716-15-15-15h-142c-8.284 0-15 6.716-15 15z\"></path><path d=\"m146.5 239.995h219c6.988 0 12.843-4.786 14.509-11.254.309-1.2.491-2.45.491-3.746 0-8.284-6.716-15-15-15h-219c-8.284 0-15 6.716-15 15 0 1.296.182 2.547.491 3.746 1.666 6.469 7.521 11.254 14.509 11.254z\"></path></svg>"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Join now and get 10% off your next purchase!",
+          "label": "t:sections.footer_v3.blocks.text.settings.title.label"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "default": "Subscribe to the weekly newsletter for all the latest updates",
+          "label": "t:sections.footer_v3.blocks.text.settings.subtitle.label"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "information"
+      },
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+{% endschema %}

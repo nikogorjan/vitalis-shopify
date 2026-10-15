@@ -1,0 +1,313 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow-v1": {
+      "type": "slideshow-v1",
+      "blocks": {
+        "slideshow_mtNwjM": {
+          "type": "slideshow",
+          "settings": {
+            "title": "Embrace Your Beauty",
+            "title_font_size": 4,
+            "title_font_weight": 500,
+            "title_animation": "fade-up",
+            "description": "Dive into summer with styles made for sun, sea, and endless fun.",
+            "description_font_size": 1.8,
+            "description_font_weight": 400,
+            "description_animation": "fade-up",
+            "button_text": "shop now",
+            "button_link": "shopify://collections/all",
+            "button_mode": "light",
+            "button_style": "tertiary",
+            "button_size": "sm",
+            "button_radius": 0,
+            "button_padding": 1.4,
+            "button_animation": "fade-up",
+            "color_scheme": "inverse",
+            "background_type": "image",
+            "background_color": "",
+            "background_gradient": "",
+            "background_image_desktop": "shopify://shop_images/S4-3.jpg",
+            "background_image_mobile": "shopify://shop_images/S4-3.jpg",
+            "use_parallax": false,
+            "background_image_animation": "zoom-out",
+            "background_video_url": "",
+            "background_video_animation": "none",
+            "background_overlay": "",
+            "background_margin": 0
+          }
+        }
+      },
+      "block_order": [
+        "slideshow_mtNwjM"
+      ],
+      "settings": {
+        "width": "fullwidth",
+        "fullwidth_margin": 0,
+        "section_height_desktop": 850,
+        "section_height_mobile": 500,
+        "gap": 30,
+        "reverse_layout": false,
+        "carousel_type": "none",
+        "changing_speed": 400,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "show_pagination": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "banner-v3": {
+      "type": "banner-v3",
+      "settings": {
+        "width": "wide",
+        "fullwidth_margin": 50,
+        "hover": "scale_up",
+        "gap": 30,
+        "title1": "skincare for men",
+        "image1": "shopify://shop_images/ba3-1.jpg",
+        "link1": "shopify://collections/all",
+        "button1_text": "SHOP NOW",
+        "button1_mode": "light",
+        "button1_style": "tertiary",
+        "button1_size": "sm",
+        "button1_radius": 0,
+        "button1_padding": 1.4,
+        "title2": "skincare for Women",
+        "image2": "shopify://shop_images/ba3-2.jpg",
+        "link2": "shopify://collections/all",
+        "button2_text": "SHOP NOW",
+        "button2_mode": "light",
+        "button2_style": "tertiary",
+        "button2_size": "sm",
+        "button2_radius": 0,
+        "button2_padding": 1.4,
+        "color_scheme": "inverse",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 80,
+        "padding_bottom": 50
+      }
+    },
+    "product-v5": {
+      "type": "product-v5",
+      "blocks": {
+        "56d37fff-faec-48c2-a823-9f82d23d2413": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Top Rating",
+            "tab_collection": "drawer-sidebar",
+            "tab_limit": 12
+          }
+        },
+        "542c09ae-815b-45a4-81fd-1b6a2bbf3c78": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Best Selling",
+            "tab_collection": "grid-3-columns",
+            "tab_limit": 12
+          }
+        },
+        "cf661f36-a23b-409f-861a-2488ca0df2b0": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Featured",
+            "tab_collection": "grid-4-columns",
+            "tab_limit": 12
+          }
+        }
+      },
+      "block_order": [
+        "56d37fff-faec-48c2-a823-9f82d23d2413",
+        "542c09ae-815b-45a4-81fd-1b6a2bbf3c78",
+        "cf661f36-a23b-409f-861a-2488ca0df2b0"
+      ],
+      "settings": {
+        "width": "wide",
+        "fullwidth_margin": 50,
+        "columns_size": 4,
+        "distinct_color_scheme": false,
+        "product_card_color_scheme": "",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "collection-v2": {
+      "type": "collection-v2",
+      "blocks": {
+        "collection_DJGtXg": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/co55-1.jpg",
+            "collection": "first-up-in-the-morning"
+          }
+        },
+        "collection_YwyFG6": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/co55-3.jpg",
+            "collection": "pair-with-a-good-nights-rest"
+          }
+        },
+        "collection_Tdafnj": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/co55-2.jpg",
+            "collection": "rinse-and-repeat"
+          }
+        }
+      },
+      "block_order": [
+        "collection_DJGtXg",
+        "collection_YwyFG6",
+        "collection_Tdafnj"
+      ],
+      "settings": {
+        "width": "fullwidth",
+        "fullwidth_margin": 50,
+        "gap": 30,
+        "auto_play": false,
+        "hover": "scale_up",
+        "bg_banner": "#f8f0e7",
+        "title": "Your New Routine",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 30
+      }
+    },
+    "product-v3": {
+      "type": "product-v3",
+      "settings": {
+        "width": "fullwidth",
+        "fullwidth_margin": 50,
+        "gap": 30,
+        "reverse_layout": true,
+        "heading": "Hydrating skincare essentials",
+        "font_size": 4,
+        "title_align": "center",
+        "collection": "best-seller",
+        "distinct_color_scheme": false,
+        "product_card_color_scheme": "background-1",
+        "banner_image": "shopify://shop_images/pro7-1_514a3ad8-54b7-488f-ac88-012a976aee4a.jpg",
+        "banner_link": "shopify://collections/all",
+        "hover": "scale_up",
+        "button_text": "View all products",
+        "button_mode": "light",
+        "button_style": "link",
+        "button_size": "lg",
+        "button_radius": 0.8,
+        "button_padding": 1.4,
+        "color_scheme": "inverse",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "product-v1": {
+      "type": "product-v1",
+      "settings": {
+        "width": "wide",
+        "fullwidth_margin": 20,
+        "subtitle": "",
+        "title": "Featured Products",
+        "collection": "product-card-style-07",
+        "limit": 8,
+        "columns_size": 4,
+        "distinct_color_scheme": false,
+        "product_card_color_scheme": "",
+        "color_scheme": "background-1",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "banner-v5": {
+      "type": "banner-v5",
+      "settings": {
+        "align": "start",
+        "title": "Where Hydration Meets<br> Pure Precision",
+        "description": "Elevate your skincare ritual with this minimalist hydration duo designed to nourish, soothe, and restore your skin’s natural balance. Infused with gentle yet effective ingredients, the Oat Extract Moisturizer helps calm sensitivity and reduce irritation.",
+        "button_text": "READ MORE",
+        "button_link": "shopify://collections/all",
+        "button_mode": "light",
+        "button_style": "secondary",
+        "button_size": "sm",
+        "button_radius": 0,
+        "button_padding": 1.4,
+        "color_scheme": "inverse",
+        "background_type": "image",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "background_image_desktop": "shopify://shop_images/b25-2.jpg",
+        "background_image_mobile": "shopify://shop_images/b25-2.jpg",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "slideshow-v1",
+    "banner-v3",
+    "product-v5",
+    "collection-v2",
+    "product-v3",
+    "product-v1",
+    "banner-v5"
+  ]
+}

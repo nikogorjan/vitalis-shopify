@@ -1,0 +1,17 @@
+# Default environment: used by every plain `shopify theme dev|push|pull`.
+# Content JSON is owned by the Shopify theme editor (images, text, section
+# order, settings). Ignoring it here means the CLI NEVER uploads local copies
+# over what the customer or you set in the editor.
+[environments.default]
+store = "0ck7y0-dz.myshopify.com"
+ignore = [
+  "templates/*.json",
+  "templates/customers/*.json",
+  "sections/*.json",
+  "config/settings_data.json",
+]
+
+# Content environment: NO ignore list. Only for deliberate, explicit
+# content work, always with --only <file>. See CLAUDE.md.
+[environments.content]
+store = "0ck7y0-dz.myshopify.com"
