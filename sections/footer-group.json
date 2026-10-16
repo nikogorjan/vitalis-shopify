@@ -28,22 +28,22 @@
         "9eb858f7-0036-4727-9925-b37e697f469e": {
           "type": "menu",
           "settings": {
-            "heading": "About us",
-            "menu": "footer-1"
+            "heading": "",
+            "menu": ""
           }
         },
         "2dcc3ebc-a2a9-4e8b-86a7-a89a4630a2bb": {
           "type": "menu",
           "settings": {
-            "heading": "Categories",
-            "menu": "footer-2"
+            "heading": "Legal",
+            "menu": "legal"
           }
         },
         "2dcc3ebc-a2a9-4e8b-86a7-a89a4630a2bc": {
           "type": "menu",
           "settings": {
-            "heading": "Information",
-            "menu": "footer-3"
+            "heading": "Categories",
+            "menu": "categories"
           }
         },
         "35d8fac8-113c-46f6-bf0e-e0d721af7e64": {
@@ -53,11 +53,11 @@
             "subtext": "New products, training tips and member-only offers, straight to your inbox.",
             "newsletter_enable": true,
             "show_social": true,
-            "social_icon1": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\" width=\"1em\" height=\"1em\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2.5\" y=\"2.5\" width=\"19\" height=\"19\" rx=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"4.3\"/><circle cx=\"17.6\" cy=\"6.4\" r=\"1.2\" fill=\"currentColor\" stroke=\"none\"/></svg>",
+            "social_icon1": "<svg aria-hidden=\"true\" focusable=\"false\" viewbox=\"0 0 24 24\" width=\"1em\" height=\"1em\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2.5\" y=\"2.5\" width=\"19\" height=\"19\" rx=\"5\"></rect><circle cx=\"12\" cy=\"12\" r=\"4.3\"></circle><circle cx=\"17.6\" cy=\"6.4\" r=\"1.2\" fill=\"currentColor\" stroke=\"none\"></circle></svg>",
             "social_link1": "https://www.instagram.com/",
-            "social_icon2": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\" width=\"1em\" height=\"1em\" fill=\"currentColor\"><path d=\"M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22h3.4z\"/></svg>",
+            "social_icon2": "<svg aria-hidden=\"true\" focusable=\"false\" viewbox=\"0 0 24 24\" width=\"1em\" height=\"1em\" fill=\"currentColor\"><path d=\"M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22h3.4z\"></path></svg>",
             "social_link2": "https://www.facebook.com/",
-            "social_icon3": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\" width=\"1em\" height=\"1em\" fill=\"currentColor\"><path d=\"M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78L17.75 3zm-1.08 16.18h1.7L7.4 4.73H5.58l11.09 14.45z\"/></svg>",
+            "social_icon3": "<svg aria-hidden=\"true\" focusable=\"false\" viewbox=\"0 0 24 24\" width=\"1em\" height=\"1em\" fill=\"currentColor\"><path d=\"M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78L17.75 3zm-1.08 16.18h1.7L7.4 4.73H5.58l11.09 14.45z\"></path></svg>",
             "social_link3": "https://x.com/",
             "social_icon4": "",
             "social_link4": ""
@@ -75,7 +75,6 @@
         "width": "wide",
         "fullwidth_margin": 0,
         "copyright": "",
-        "image_payment": "shopify://shop_images/payment_footer.png",
         "color_scheme": "background-1",
         "background_type": "color",
         "background_color": "#f3f4fc",

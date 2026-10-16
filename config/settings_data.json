@@ -250,14 +250,14 @@
       "scrolltop_color": "#ffffff",
       "scrolltop_background_color": "#000000",
       "toolbar_background_color": "#ffffff",
-      "favicon": "shopify:\/\/shop_images\/favicon.png",
+      "favicon": "shopify://shop_images/favicon.png",
       "currency_code_enabled": false,
       "cart_type": "drawer",
       "show_vendor": false,
       "show_cart_note": false,
       "cart_drawer_collection": "best-seller",
       "cart_drawer_placement": "right",
-      "show_cart_free_shipping": true,
+      "show_cart_free_shipping": false,
       "cart_free_shipping_min_amount": 600,
       "sections": {
         "main-password-header": {
@@ -272,7 +272,8 @@
             "color_scheme": "background-1"
           }
         }
-      }
+      },
+      "product_card_show_wishlist": false
     },
     "Preset-2": {
       "logo_width": 90,

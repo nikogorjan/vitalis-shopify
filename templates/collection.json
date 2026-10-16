@@ -11,14 +11,6 @@
   "sections": {
     "collection-title": {
       "type": "collection-title",
-      "settings": {
-        "color_scheme": "inverse",
-        "background_image_desktop": "shopify:\/\/shop_images\/breadcrumb.jpg",
-        "background_image_mobile": "shopify:\/\/shop_images\/breadcrumb.jpg",
-        "background_color": "#f3f3f3",
-        "padding_top": 110,
-        "padding_bottom": 110
-      },
       "blocks": {
         "3be361b1-1ee2-4f6b-b8b6-590e4f6dbe76": {
           "type": "collection",
@@ -92,15 +84,70 @@
         "7404e6e3-b5bb-44f3-ba36-2ebacfb51ef6",
         "e87f8941-994b-40da-bd91-0d9a247d7d2f",
         "b951cdf9-06dc-46b5-8d67-40639eb8b4a4"
-      ]
+      ],
+      "disabled": true,
+      "settings": {
+        "width": "box",
+        "columns": 6,
+        "style": "style2",
+        "color_scheme": "inverse",
+        "background_type": "color",
+        "background_color": "#f3f3f3",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 110,
+        "padding_bottom": 110
+      }
     },
     "main-collection": {
       "type": "main-collection",
       "settings": {
+        "width": "box",
+        "products_per_page": 12,
+        "columns_desktop": 3,
+        "collection_style": "sidebar",
+        "sidebar": "left",
+        "filter_style": "drawer",
+        "product_loadtype": "paginate",
+        "product_layout": "grid",
+        "menu_title": "CATEGORIES",
         "menu_sidebar": "categories",
+        "show_bestsell": false,
+        "bestsell_title": "BEST SELLERS",
+        "products_bestsell_limit": 8,
+        "columns_bestsell": 3,
         "bestsell_collection": "frontpage",
+        "show_pagination": true,
+        "show_pagination_mobile": false,
+        "show_banner_modern": false,
+        "banner_modern_link": "",
+        "show_banner": false,
+        "banner_link": "",
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "product_card_show_image": true,
         "product_card_show_vendor": false,
-        "product_card_show_description": false
+        "product_card_show_description": false,
+        "product_card_show_quick_add": true,
+        "product_card_show_quick_view": true,
+        "product_card_show_wishlist": true,
+        "product_card_show_price": true,
+        "product_card_show_badge": true,
+        "product_card_aspect_ratio": "1/1",
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
       }
     }
   },

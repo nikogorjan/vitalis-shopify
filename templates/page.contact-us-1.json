@@ -9,23 +9,136 @@
  */
 {
   "sections": {
+    "vitalis-contact": {
+      "type": "vitalis-contact",
+      "settings": {
+        "subtitle": "Get in touch",
+        "title": "",
+        "intro": "<p>Questions about our products, your order or a partnership? We're happy to help.</p>",
+        "info_title": "Customer care",
+        "info_text": "<p>Send us a message and we'll reply within 1–2 business days.</p>",
+        "email": "",
+        "phone": "",
+        "address": "",
+        "hours": "",
+        "email_label": "Email",
+        "phone_label": "Phone",
+        "address_label": "Address",
+        "hours_label": "Hours",
+        "social_label": "Follow us",
+        "instagram_link": "https://www.instagram.com/",
+        "facebook_link": "https://www.facebook.com/",
+        "x_link": "https://x.com/",
+        "form_title": "Send us a message",
+        "button_label": "Send message",
+        "success_message": "Thanks for your message. We'll get back to you within 1–2 business days.",
+        "width": "box",
+        "fullwidth_margin": 0
+      }
+    },
+    "vitalis-newsletter": {
+      "type": "vitalis-newsletter",
+      "settings": {
+        "image": "shopify://shop_images/Slika_ChatGPT_16._okt._2026_01_01_57.webp",
+        "subtitle": "Newsletter",
+        "title": "Join the Vitalis circle",
+        "text": "<p>New products, training tips and member-only offers, straight to your inbox.</p>",
+        "button_label": "Subscribe",
+        "note": "No spam. Unsubscribe anytime.",
+        "width": "box",
+        "fullwidth_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "vitalis-instagram": {
+      "type": "vitalis-instagram",
+      "blocks": {
+        "ig1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Moski_v_sportni_opremi_VITALIS.webp",
+            "link": ""
+          }
+        },
+        "ig2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Slika_ChatGPT_16._okt._2026_00_28_17.webp",
+            "link": ""
+          }
+        },
+        "ig3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Fitnesna_promocija_z_VITALIS_napitkom.webp",
+            "link": ""
+          }
+        },
+        "ig4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Slika_ChatGPT_16._okt._2026_01_01_57.webp",
+            "link": ""
+          }
+        },
+        "ig5": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Vrhunski_Vitalis_whey_v_telovadnici.webp",
+            "link": ""
+          }
+        },
+        "ig6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Premiumni_multivitamin_na_kuhinjskem_pultu.webp",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "ig1",
+        "ig2",
+        "ig3",
+        "ig4",
+        "ig5",
+        "ig6"
+      ],
+      "settings": {
+        "subtitle": "Follow us",
+        "title": "@vitalis",
+        "link": "https://www.instagram.com/",
+        "width": "box",
+        "fullwidth_margin": 0,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
     "breadcrumb-v2": {
       "type": "breadcrumb-v2",
+      "disabled": true,
       "settings": {
         "color_scheme": "inverse",
+        "background_type": "color",
         "background_color": "#f3f3f3",
         "background_gradient": "",
-        "background_image_desktop": "shopify://shop_images/Breadcrumb.jpg",
-        "background_image_mobile": "shopify://shop_images/Breadcrumb.jpg",
         "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 110,
         "padding_bottom": 110
       }
     },
     "contact_v1_PKH9fF": {
       "type": "contact-v1",
+      "disabled": true,
       "settings": {
         "width": "box",
+        "fullwidth_margin": 0,
         "reverse_layout": false,
         "title": "CONTACT INFORMATION",
         "content": "<p style=\"padding-bottom:16px\">We do not sell product from our corporate headquarters in New York City. If you want to visit, please reach out to our customer service team first.</p><p style=\"padding-bottom:16px\">1201 Broadway<br>Suite 600</p>",
@@ -41,50 +154,71 @@
         "social_link4": "",
         "map_style": "image",
         "map_iframe": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26845.22484591743!2d-111.6917055954578!3d32.74840075965826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872a6554458b43f7%3A0x89ecc26050823816!2sArizona%20City%2C%20Arizona%2085123%2C%20Hoa%20K%E1%BB%B3!5e0!3m2!1svi!2s!4v1711515620452!5m2!1svi!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
-        "map_image": "shopify://shop_images/map.jpg",
         "map_link": "",
         "color_scheme": "",
+        "background_type": "color",
         "background_color": "",
         "background_gradient": "",
         "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 50,
         "padding_bottom": 50
       }
     },
     "contact_v2_rbAA39": {
       "type": "contact-v2",
+      "disabled": true,
       "settings": {
         "width": "box",
+        "fullwidth_margin": 0,
         "title": "Contact Form",
         "button_text": "Submit",
         "color_scheme": "",
+        "background_type": "color",
         "background_color": "",
         "background_gradient": "",
         "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 50,
         "padding_bottom": 50
       }
     },
     "newsletter_v1_x4pjNU": {
       "type": "newsletter-v1",
+      "disabled": true,
       "settings": {
         "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" style=\"fill:#fff\" id=\"Capa_1\" enable-background=\"new 0 0 512 512\" height=\"512\" viewbox=\"0 0 512 512\" width=\"512\" class=\"mdl-js\"><path d=\"m512 203.06v-.045c0-.427-.024-.85-.059-1.271-.01-.115-.025-.229-.037-.344-.036-.33-.082-.657-.139-.981-.021-.122-.042-.244-.066-.365-.08-.395-.171-.787-.282-1.172-.011-.038-.02-.077-.031-.115-.117-.394-.253-.781-.401-1.163-.056-.146-.118-.289-.179-.434-.109-.258-.226-.513-.35-.764-.072-.146-.141-.293-.217-.437-.187-.351-.386-.695-.6-1.031-.08-.125-.168-.245-.252-.368-.167-.245-.34-.485-.521-.719-.097-.125-.194-.249-.295-.372-.263-.319-.535-.631-.825-.928-.023-.023-.045-.047-.068-.07-.31-.315-.64-.612-.979-.9-.042-.036-.078-.076-.121-.111l-25.578-21.225v-65.229c0-19.299-15.701-35-35-35h-85.776l-69.1-57.345c-20.354-16.888-49.896-16.888-70.248 0l-69.1 57.344h-85.776c-19.299 0-35 15.701-35 35v65.229l-25.579 21.228c-.042.035-.079.075-.121.111-.339.288-.669.585-.979.9-.023.023-.045.047-.068.07-.289.297-.562.609-.825.928-.101.122-.198.247-.295.372-.181.235-.354.475-.521.719-.084.123-.172.243-.252.368-.214.335-.413.679-.6 1.031-.077.144-.146.291-.217.437-.124.251-.24.506-.35.764-.061.144-.123.288-.179.434-.148.382-.285.768-.401 1.163-.011.038-.02.076-.031.115-.111.385-.202.777-.282 1.172-.024.122-.045.243-.066.365-.057.324-.103.651-.139.981-.012.115-.027.229-.037.344-.034.419-.058.842-.058 1.269v.045.008 253.927c0 15.718 6.638 29.906 17.246 39.939.301.301.603.599.925.87 9.757 8.814 22.676 14.19 36.829 14.19h402c14.154 0 27.074-5.377 36.832-14.193.319-.27.619-.565.918-.864 10.61-10.033 17.25-24.223 17.25-39.943v-253.926c0-.002 0-.005 0-.008zm-446-103.045h380c2.757 0 5 2.243 5 5v116.682l-8.488 7.044-170.546 141.533c-9.251 7.677-22.681 7.676-31.932 0l-170.546-141.532-8.488-7.045v-116.682c0-2.757 2.243-5 5-5zm-36 356.98v-222.04l6.452 5.355c.004.003.008.007.012.01l146.469 121.551-151.397 103.752c-.993-2.69-1.536-5.597-1.536-8.628zm176.937-75.204 13.939 11.568c20.352 16.89 49.896 16.889 70.248 0l13.939-11.568 146.22 100.204h-390.567zm122.13-19.919 146.468-121.552c.004-.003.008-.007.012-.01l6.452-5.355v222.04c0 3.031-.543 5.938-1.536 8.628zm-89.033-326.114c9.251-7.677 22.681-7.677 31.932 0l41.281 34.258h-114.494z\"></path><path d=\"m131.5 164.995c0 8.284 6.716 15 15 15h142c8.284 0 15-6.716 15-15s-6.716-15-15-15h-142c-8.284 0-15 6.716-15 15z\"></path><path d=\"m146.5 239.995h219c6.988 0 12.843-4.786 14.509-11.254.309-1.2.491-2.45.491-3.746 0-8.284-6.716-15-15-15h-219c-8.284 0-15 6.716-15 15 0 1.296.182 2.547.491 3.746 1.666 6.469 7.521 11.254 14.509 11.254z\"></path></svg>",
         "title": "OURNEWSLETTER!",
         "subtitle": "It only takes a second to be the first to findout about our latest news",
         "button_mode": "dark",
         "color_scheme": "inverse",
+        "background_type": "color",
         "background_color": "",
         "background_gradient": "",
-        "background_image_desktop": "shopify://shop_images/newlletter_about.jpg",
         "use_parallax": false,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 120,
         "padding_bottom": 120
       }
     },
     "instagram_v3_b9QRxj": {
       "type": "instagram-v1",
+      "disabled": true,
       "settings": {
         "width": "fullwidth",
+        "fullwidth_margin": 0,
         "icon_heading": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"70\" height=\"70\" viewbox=\"0 0 50 50\" fill=\"none\">\n  <g clip-path=\"url(#clip0_11_25)\">\n    <path d=\"M34.375 0H15.625C6.99687 0 0 6.99687 0 15.625V34.375C0 43.0031 6.99687 50 15.625 50H34.375C43.0031 50 50 43.0031 50 34.375V15.625C50 6.99687 43.0031 0 34.375 0ZM45.3125 34.375C45.3125 40.4062 40.4062 45.3125 34.375 45.3125H15.625C9.59375 45.3125 4.6875 40.4062 4.6875 34.375V15.625C4.6875 9.59375 9.59375 4.6875 15.625 4.6875H34.375C40.4062 4.6875 45.3125 9.59375 45.3125 15.625V34.375Z\" fill=\"url(#paint0_linear_11_25)\"></path>\n    <path d=\"M25 12.5C18.0969 12.5 12.5 18.0969 12.5 25C12.5 31.9031 18.0969 37.5 25 37.5C31.9031 37.5 37.5 31.9031 37.5 25C37.5 18.0969 31.9031 12.5 25 12.5ZM25 32.8125C20.6937 32.8125 17.1875 29.3063 17.1875 25C17.1875 20.6906 20.6937 17.1875 25 17.1875C29.3063 17.1875 32.8125 20.6906 32.8125 25C32.8125 29.3063 29.3063 32.8125 25 32.8125Z\" fill=\"url(#paint1_linear_11_25)\"></path>\n    <path d=\"M38.4375 13.2281C39.3574 13.2281 40.1031 12.4824 40.1031 11.5625C40.1031 10.6426 39.3574 9.89685 38.4375 9.89685C37.5176 9.89685 36.7719 10.6426 36.7719 11.5625C36.7719 12.4824 37.5176 13.2281 38.4375 13.2281Z\" fill=\"url(#paint2_linear_11_25)\"></path>\n  </g>\n  <defs>\n    <lineargradient id=\"paint0_linear_11_25\" x1=\"4.57703\" y1=\"45.4233\" x2=\"45.423\" y2=\"4.57672\" gradientunits=\"userSpaceOnUse\">\n      <stop stop-color=\"#FFC107\"></stop>\n      <stop offset=\"0.507\" stop-color=\"#F44336\"></stop>\n      <stop offset=\"0.99\" stop-color=\"#9C27B0\"></stop>\n    </lineargradient>\n    <lineargradient id=\"paint1_linear_11_25\" x1=\"16.1614\" y1=\"33.8386\" x2=\"33.8386\" y2=\"16.1614\" gradientunits=\"userSpaceOnUse\">\n      <stop stop-color=\"#FFC107\"></stop>\n      <stop offset=\"0.507\" stop-color=\"#F44336\"></stop>\n      <stop offset=\"0.99\" stop-color=\"#9C27B0\"></stop>\n    </lineargradient>\n    <lineargradient id=\"paint2_linear_11_25\" x1=\"37.2598\" y1=\"12.7404\" x2=\"39.6152\" y2=\"10.3848\" gradientunits=\"userSpaceOnUse\">\n      <stop stop-color=\"#FFC107\"></stop>\n      <stop offset=\"0.507\" stop-color=\"#F44336\"></stop>\n      <stop offset=\"0.99\" stop-color=\"#9C27B0\"></stop>\n    </lineargradient>\n    <clippath id=\"clip0_11_25\">\n      <rect width=\"50\" height=\"50\" fill=\"white\"></rect>\n    </clippath>\n  </defs>\n</svg>",
         "icon_image": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 448 512\"><path d=\"M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z\"></path></svg>",
         "title": "Follow us on instagram",
@@ -93,14 +227,19 @@
         "limit": 6,
         "auto_play": false,
         "color_scheme": "",
+        "background_type": "color",
         "background_color": "",
         "background_gradient": "",
+        "background_margin": 0,
         "padding_top": 0,
         "padding_bottom": 0
       }
     }
   },
   "order": [
+    "vitalis-contact",
+    "vitalis-newsletter",
+    "vitalis-instagram",
     "breadcrumb-v2",
     "contact_v1_PKH9fF",
     "contact_v2_rbAA39",

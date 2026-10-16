@@ -41,6 +41,7 @@
         },
         "b1d95bc4-490b-4b8c-914a-89b1323d2a41": {
           "type": "countdown_time",
+          "disabled": true,
           "settings": {
             "countdown_title": "Sale ends in:"
           }
@@ -55,12 +56,14 @@
         },
         "4dabf9d3-3372-4f5a-9edf-1e1f03527b1c": {
           "type": "visitor",
+          "disabled": true,
           "settings": {
             "visitor_text": "people are viewing this right now"
           }
         },
         "4dabf9d3-3372-4f5a-9edf-1e1f03527b1a": {
           "type": "offer",
+          "disabled": true,
           "settings": {
             "offer_title": "Special Offer",
             "offer_content1": "In Stock",
@@ -70,10 +73,12 @@
         },
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94h": {
           "type": "countdown_stock",
+          "disabled": true,
           "settings": {}
         },
         "addon_buttons_MGW7hE": {
           "type": "addon_buttons",
+          "disabled": true,
           "settings": {
             "sizeguide_page": "size-guide",
             "sizeguide_image": "shopify://shop_images/sizeguide.png",
@@ -89,6 +94,7 @@
         },
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94k": {
           "type": "buy_othersite",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/ebay-logo.png",
             "link": "https://www.ebay.com/"
@@ -96,6 +102,7 @@
         },
         "941018d2-7613-4b60-aa2c-94962df06c94": {
           "type": "trustbadge",
+          "disabled": true,
           "settings": {
             "trustbadge_image": "shopify://shop_images/payment_methods_940a3571-dee7-40cd-bd1e-b1de887753fc.png"
           }
@@ -106,6 +113,7 @@
         },
         "367088f1-d502-47f7-b8b1-1c3f0e2221ce": {
           "type": "shipping",
+          "disabled": true,
           "settings": {}
         },
         "cac56f9f-8acd-4ad3-bdcc-54a1403984cf": {
@@ -127,27 +135,31 @@
         },
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94f": {
           "type": "liquid",
-          "disabled": true,
-          "settings": {}
+          "settings": {
+            "liquid": "{% render 'vitalis-product-trust' %}",
+            "padding_top": 10,
+            "padding_bottom": 10
+          }
         },
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94g": {
           "type": "collapse",
           "settings": {
             "heading": "Description",
             "content": "",
-            "content_liquid": "{% render 'product-description-style3' %}"
+            "content_liquid": "{{ product.description }}"
           }
         },
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94l": {
           "type": "collapse",
           "settings": {
-            "heading": "Shipping & return",
+            "heading": "Shipping & returns",
             "content": "",
-            "content_liquid": "{% assign policy_content = shop.policies | where: 'title', 'Shipping policy' | first %} {{ policy_content.body }}"
+            "content_liquid": "{%- assign policy_content = shop.policies | where: 'title', 'Shipping policy' | first -%}{%- if policy_content.body != blank -%}{{ policy_content.body }}{%- else -%}<p>Free shipping on orders over $100. Shipping costs and delivery times are shown at checkout.</p>{%- endif -%}"
           }
         },
         "367088f1-d502-47f7-b8b1-1c3f0e2221ae": {
           "type": "image",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -163,6 +175,7 @@
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94h",
         "addon_buttons_MGW7hE",
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94d",
+        "ae0ed4c8-948a-46c7-b292-5f2687b8c94f",
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94k",
         "941018d2-7613-4b60-aa2c-94962df06c94",
         "367088f1-d502-47f7-b8b1-1c3f0e2221be",
@@ -170,12 +183,12 @@
         "cac56f9f-8acd-4ad3-bdcc-54a1403984cf",
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94e",
         "367088f1-d502-47f7-b8b1-1c3f0e2221af",
-        "ae0ed4c8-948a-46c7-b292-5f2687b8c94f",
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94g",
         "ae0ed4c8-948a-46c7-b292-5f2687b8c94l",
         "367088f1-d502-47f7-b8b1-1c3f0e2221ae"
       ],
       "settings": {
+        "wishlist": false,
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -196,6 +209,7 @@
         "tab1",
         "tab2"
       ],
+      "disabled": true,
       "settings": {
         "padding_bottom": 0
       }
