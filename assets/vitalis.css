@@ -189,6 +189,62 @@
   }
 }
 
+/* Product options shown as boxes: the theme makes them fixed 42px squares
+   (made for S/M/L), so "250 g" or "120 capsules" wrapped and overlapped. */
+.xo-field-radio--boxed .xo-field-radio__label,
+.xo-field-radio--boxed2 .xo-field-radio__label,
+.xo-field-radio--boxed3 .xo-field-radio__label {
+  width: auto;
+  min-width: 4.2rem;
+  padding: 0 1.4rem;
+  border-radius: 0;
+  white-space: nowrap;
+}
+
+/* Product page trust points (snippets/vitalis-product-trust.liquid). */
+.vitalis-trust {
+  display: grid;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 2rem 0;
+  list-style: none;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+@media (min-width: 576px) {
+  .vitalis-trust {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.6rem;
+  }
+}
+
+.vitalis-trust__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.vitalis-trust__item svg {
+  flex: 0 0 auto;
+  width: 2.4rem;
+  height: 2.4rem;
+  color: #8f7a4e;
+}
+
+/* No wishlist anywhere: product cards, quick view, product page, sticky
+   add-to-cart bar, search and any link to the wishlist page. */
+xo-products-fetcher-add[xo-type='wishlist'],
+xo-products-fetcher-size[xo-type='wishlist'],
+.xo-product-card__wishlist,
+.xo-product-info-content__wishlist,
+.sticky-addcart__wishlist,
+a[href*='/pages/wishlist'] {
+  display: none !important;
+}
+
 /* Cart count badge: brand gold with dark text (header + mobile toolbar). */
 .header-v14__cart-count,
 .toolbar__cart-count {

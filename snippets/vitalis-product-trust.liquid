@@ -1,0 +1,19 @@
+{%- comment -%}
+  Three trust points shown under the buy buttons on the product page.
+  Used from the product template's "Custom liquid" block:
+  {% render 'vitalis-product-trust' %}
+{%- endcomment -%}
+<ul class='vitalis-trust' role='list'>
+  <li class='vitalis-trust__item'>
+    <svg aria-hidden='true' focusable='false' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linejoin='round'><path d='M1.5 5.5h12v10h-12zM13.5 9h4.5l3.5 3.5v3h-8z'/><circle cx='5.5' cy='17.5' r='1.8'/><circle cx='17.5' cy='17.5' r='1.8'/></svg>
+    <span>Free shipping on orders over $100</span>
+  </li>
+  <li class='vitalis-trust__item'>
+    <svg aria-hidden='true' focusable='false' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linejoin='round'><path d='M5 10.5h14v10H5z'/><path d='M8 10.5V7.5a4 4 0 0 1 8 0v3'/></svg>
+    <span>Secure checkout</span>
+  </li>
+  <li class='vitalis-trust__item'>
+    <svg aria-hidden='true' focusable='false' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linejoin='round'><circle cx='12' cy='9' r='6'/><path d='M8.5 14l-1.5 7.5 5-2.5 5 2.5-1.5-7.5'/></svg>
+    <span>Premium formulas</span>
+  </li>
+</ul>
