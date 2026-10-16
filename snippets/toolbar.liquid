@@ -25,11 +25,6 @@
     >
       {% render 'icon', name: 'account1', icon_size: '22', color: 'rgba(var(--color-foreground))' %}
     </a>
-    <div class='toolbar__item'>
-      <a href='/pages/wishlist' aria-label='Wishlist' title='Wishlist'>
-        {% render 'icon', name: 'heart', icon_size: '22', color: 'rgba(var(--color-foreground))' %}
-      </a>
-    </div>
     {% if settings.cart_type == 'page' %}
       <a href='{{ routes.cart_url }}' class='toolbar__item'>
         <span class='toolbar__icon'>

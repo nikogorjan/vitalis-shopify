@@ -175,20 +175,18 @@
             {%- if customer -%}{{ 'customer.account.title' | t }}{%- else -%}{{ 'customer.login_page.title' | t }}{%- endif -%}
           </span>
         </a>
-        <a href='/pages/wishlist' class='menu-hamburger-drawer-mobile__utility'>
-          {% render 'icon', name: 'heart', icon_size: '18' %}
-          <span style='padding-top:0.3rem'>
-            {{ 'general.wishlist.wishlist' | t }}
-          </span>
-        </a>
       </div>
-      <div class='menu-hamburger-drawer-mobile__selects'>
-        {% render 'language-select', placement: 'top-center' %}
-        <div class='menu-hamburger-drawer-mobile__select-item'>
-          <span class='menu-hamburger-drawer-mobile__flag'>{{ localization.country | image_url: width: 20 | image_tag }}</span>
-          {% render 'currency-select', placement: 'top-center' %}
+      {%- if localization.available_languages.size > 1 or localization.available_countries.size > 1 -%}
+        <div class='menu-hamburger-drawer-mobile__selects'>
+          {% render 'language-select', placement: 'top-center' %}
+          {%- if localization.available_countries.size > 1 -%}
+            <div class='menu-hamburger-drawer-mobile__select-item'>
+              <span class='menu-hamburger-drawer-mobile__flag'>{{ localization.country | image_url: width: 20 | image_tag }}</span>
+              {% render 'currency-select', placement: 'top-center' %}
+            </div>
+          {%- endif -%}
         </div>
-      </div>
+      {%- endif -%}
     </div>
   </div>
 </xo-modal>

@@ -1,0 +1,172 @@
+/* Vitalis brand overrides. Loaded after main.min.css. */
+
+:root {
+  --vitalis-gold: #dcc28a;
+  --vitalis-black: #0d0d0f;
+
+  /* Sharp corners everywhere: override the theme's corner settings
+     (set in snippets/settings-adapter.liquid, loaded before this file). */
+  --buttons-radius: 0px;
+  --buttons-radius-outset: 0px;
+  --inputs-radius: 0px;
+  --modal-corner-radius: 0px;
+  --drawer-corner-radius: 0px;
+  --text-boxes-radius: 0px;
+  --media-radius: 0px;
+  --badge-corner-radius: 0rem;
+  --product-card-corner-radius: 0rem;
+  --collection-card-corner-radius: 0rem;
+  --article-card-corner-radius: 0rem;
+}
+
+/* Footer social icons: square instead of round, in the text color
+   (icons use currentColor). */
+.footer-v14__social-link {
+  border-radius: 0;
+  color: rgb(var(--color-foreground));
+  font-size: 1.6rem;
+}
+
+.footer-v14__social-link:hover {
+  color: rgb(var(--color-background));
+}
+
+/* Popup close buttons: square. */
+.xo-modal-content-style1__close {
+  border-radius: 0;
+}
+
+/* Transparent header over the hero: a soft dark fade behind it keeps the
+   icons readable. Attached to the page top, so it scrolls away and the
+   sticky header keeps its own background. */
+.header-v14--transparent::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 18rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 13, 15, 0.85) 0%,
+    rgba(13, 13, 15, 0.5) 50%,
+    rgba(13, 13, 15, 0) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+.header-v14--transparent .header-v14__icon svg,
+.header-v14--transparent .header-v14__logo img,
+.header-v14--transparent .xo-menu-horizontal__arrow svg,
+.header-v14--transparent .xo-menu-hamburger__icon svg {
+  filter: drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0.9)) drop-shadow(0 0.1rem 0.6rem rgba(0, 0, 0, 0.6));
+}
+
+/* Top-level menu links only; dropdowns have their own solid background. */
+.header-v14--transparent .xo-menu-horizontal__label {
+  text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.9), 0 0.1rem 0.6rem rgba(0, 0, 0, 0.6);
+}
+
+/* Slideshow text on mobile sits over the product image: add a text shadow
+   and a soft dark glow behind the text block so it stays readable. */
+@media (max-width: 767px) {
+  .slideshow-v56__text {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .slideshow-v56__text::before {
+    content: '';
+    position: absolute;
+    inset: -10% -15%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(13, 13, 15, 0.6) 0%,
+      rgba(13, 13, 15, 0.35) 45%,
+      rgba(13, 13, 15, 0) 75%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .slideshow-v56__subtitle,
+  .slideshow-v56__title,
+  .slideshow-v56__description {
+    text-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.8), 0 0.2rem 1.2rem rgba(0, 0, 0, 0.6);
+  }
+
+  .slideshow-v56__description {
+    color: rgba(var(--color-foreground), 0.9);
+  }
+
+  .slideshow-v56__text .xo-btn {
+    background-color: rgba(13, 13, 15, 0.45);
+    text-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Tabs: Vitalis gold for the active tab instead of the theme accent
+   (copper) or black. Text on gold is dark for contrast. */
+@media (max-width: 767px) {
+  .product-v13__tab-trigger[xo-active]:not([xo-active=false]) {
+    background-color: var(--vitalis-gold);
+    color: var(--vitalis-black);
+  }
+}
+
+.product-v13__tab-trigger::after,
+.product-information-tabs__trigger::after {
+  background-color: var(--vitalis-gold);
+}
+
+/* Product grid (used by the homepage product tabs, product-v5, instead of
+   the theme's carousel): 2 columns on mobile/tablet, --columns on desktop. */
+.vitalis-product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3.2rem 1.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 990px) {
+  .vitalis-product-grid {
+    grid-template-columns: repeat(var(--columns, 4), minmax(0, 1fr));
+    gap: 5rem 3rem;
+  }
+}
+
+/* Newsletter (newsletter-v2): sharp corners, gold button and an uppercase
+   display-font title, like the rest of the Vitalis sections. */
+.newsletter-v2__title {
+  font-family: var(--font-custom-family);
+  font-weight: var(--font-custom-weight, 700);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.newsletter-v2 .xo-field-input__input,
+.newsletter-v2 .xo-btn {
+  border-radius: 0;
+}
+
+.newsletter-v2 .xo-btn {
+  background-color: var(--vitalis-gold);
+  border-color: var(--vitalis-gold);
+  color: var(--vitalis-black);
+  letter-spacing: 0.2em;
+}
+
+/* The slide-up effect draws the label with ::before/::after. */
+.newsletter-v2 .xo-btn .xo-btn__text[data-text]::before,
+.newsletter-v2 .xo-btn .xo-btn__text[data-text]::after {
+  color: var(--vitalis-black);
+}
+
+/* Cart count badge: brand gold with dark text (header + mobile toolbar). */
+.header-v14__cart-count,
+.toolbar__cart-count {
+  background-color: var(--vitalis-gold);
+  color: var(--vitalis-black);
+  font-weight: 600;
+}

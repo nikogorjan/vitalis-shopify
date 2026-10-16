@@ -84,12 +84,12 @@
           </div>
           <div class='header-v14__utilities'>
             <div class='header-v14__selector'>
-              {% if section.settings.language_selector %}
+              {% if section.settings.language_selector and localization.available_languages.size > 1 %}
                 <div class='header-v14__language'>
                   {% render 'language-select' %}
                 </div>
               {% endif %}
-              {% if section.settings.currency_selector %}
+              {% if section.settings.currency_selector and localization.available_countries.size > 1 %}
                 <div class='header-v14__currency'>
                   {% render 'currency-select' %}
                 </div>
@@ -111,12 +111,6 @@
                   class='header-v14__icon'
                 >
                   {% render 'icon', name: 'account1', icon_size: '24', color: 'rgba(var(--color-foreground))' %}
-                </a>
-              </xo-tooltip>
-              <xo-tooltip xo-title='{{ 'general.wishlist.wishlist' | t }}' xo-placement='bottom-center' class='header-v14__icon-wrap header-v14__icon-wrap--desktop'>
-                <a href='/pages/wishlist' aria-label='Wishlist' title='Wishlist' class='header-v14__icon'>
-                  {% render 'icon', name: 'heart', icon_size: '24', color: 'rgb(var(--color-foreground))' %}
-                  <xo-products-fetcher-size xo-type='wishlist' class='header-v14__wishlist-count'></xo-products-fetcher-size>
                 </a>
               </xo-tooltip>
               <xo-tooltip xo-title='{{ 'general.cart.cart' | t }}' xo-placement='bottom-center' class='header-v14__icon-wrap'>

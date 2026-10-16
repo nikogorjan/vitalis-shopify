@@ -27,63 +27,38 @@
               xo-active
             {% endif %}
           >
+            {%- comment -%} Vitalis: grid instead of the theme's carousel, so every product shows. {%- endcomment -%}
             <xo-animate xo-cascade>
-              <xo-carousel
-                xo-per-view='{{section.settings.columns_size}}'
-                xo-gap='30'
-                xo-speed='400'
-                xo-render-bullet='<span></span>'
-                xo-breakpoints='
-                  {
-                    1199: {
-                      perView: 3,
-                    },
-                    767: {
-                      perView: 2,
-                    },
-                    575: {
-                      perView: 1,
-                    },
-                  }
-                '
-              >
-                <xo-carousel-inner>
-                  <xo-carousel-list role='list' aria-label='{{ 'general.slider.name' | t }}'>
-                    {% for product in block.settings.tab_collection.products limit: block.settings.tab_limit %}
-                      {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
-                      {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
-                      <xo-carousel-slide
-                        aria-roledescription='{{ 'sections.slideshow.slide' | t }}'
-                        aria-label='{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}'
-                      >
-                        {% if section.settings.distinct_color_scheme == true %}
-                          {% assign color_scheme_chosen = section.settings.product_card_color_scheme %}
-                        {% else %}
-                          {% assign color_scheme_chosen = settings.card_color_scheme %}
-                        {% endif %}
-                        {% render 'product-card-styles',
-                          product_card_style: settings.product_card_style_layout,
-                          product: product,
-                          variant_modal_placement: settings.variant_modal_placement,
-                          show_image: settings.product_card_show_image,
-                          product_card_media_type: settings.product_card_media_type,
-                          show_vendor: settings.product_card_show_vendor,
-                          show_description: settings.product_card_show_description,
-                          show_quick_add: settings.product_card_show_quick_add,
-                          show_quick_view: settings.product_card_show_quick_view,
-                          show_wishlist: settings.product_card_show_wishlist,
-                          show_price: settings.product_card_show_price,
-                          show_badge: settings.product_card_show_badge,
-                          media_aspect_ratio: settings.product_card_aspect_ratio,
-                          color_scheme: color_scheme_chosen,
-                          placeholder_image: placeholder_image
-                        %}
-                      </xo-carousel-slide>
-                    {% endfor %}
-                  </xo-carousel-list>
-                </xo-carousel-inner>
-                {% render 'carousel-pagination-style3', class: 'product-v13__pagination' %}
-              </xo-carousel>
+              <ul class='vitalis-product-grid' role='list' style='--columns: {{ section.settings.columns_size }};'>
+                {% for product in block.settings.tab_collection.products limit: block.settings.tab_limit %}
+                  {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                  {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+                  <li class='vitalis-product-grid__item'>
+                    {% if section.settings.distinct_color_scheme == true %}
+                      {% assign color_scheme_chosen = section.settings.product_card_color_scheme %}
+                    {% else %}
+                      {% assign color_scheme_chosen = settings.card_color_scheme %}
+                    {% endif %}
+                    {% render 'product-card-styles',
+                      product_card_style: settings.product_card_style_layout,
+                      product: product,
+                      variant_modal_placement: settings.variant_modal_placement,
+                      show_image: settings.product_card_show_image,
+                      product_card_media_type: settings.product_card_media_type,
+                      show_vendor: settings.product_card_show_vendor,
+                      show_description: settings.product_card_show_description,
+                      show_quick_add: settings.product_card_show_quick_add,
+                      show_quick_view: settings.product_card_show_quick_view,
+                      show_wishlist: settings.product_card_show_wishlist,
+                      show_price: settings.product_card_show_price,
+                      show_badge: settings.product_card_show_badge,
+                      media_aspect_ratio: settings.product_card_aspect_ratio,
+                      color_scheme: color_scheme_chosen,
+                      placeholder_image: placeholder_image
+                    %}
+                  </li>
+                {% endfor %}
+              </ul>
             </xo-animate>
           </xo-tabs-pane>
         {% endfor %}

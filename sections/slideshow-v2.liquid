@@ -1,4 +1,17 @@
-
+{%- style -%}
+  /* Fade/none carousels position every slide absolutely, so the section has
+     no height until the carousel JS runs and the page jumps. Keep the first
+     slide in flow so it reserves the height from the first paint. The doubled
+     class outranks the theme's [xo-carousel-slide] rule added after init. */
+  .xo-section--{{ section.id }}.xo-section--{{ section.id }} xo-carousel-slide:first-child {
+    position: relative;
+    width: 100%;
+  }
+  /* Show the first slide before the carousel JS has initialized. */
+  .xo-section--{{ section.id }} xo-carousel:not([xo-initialized]) xo-carousel-slide:first-child {
+    visibility: visible;
+  }
+{%- endstyle -%}
 
 <section class='{{ 'xo-section--' | append: section.id }}'>
   <xo-carousel

@@ -43,6 +43,7 @@
 
     {{ 'xo-webcomponents.min.css' | asset_url | stylesheet_tag }}
     {{ 'main.min.css' | asset_url | stylesheet_tag }}
+    {{ 'vitalis.css' | asset_url | stylesheet_tag }}
 
     {% render 'google-fonts-link' %}
 
@@ -75,6 +76,7 @@
 
     <script src='{{ 'xo-webcomponents.min.js' | asset_url }}' defer></script>
     <script src='{{ 'main.min.js' | asset_url }}' defer></script>
+    <script src='{{ 'vitalis.js' | asset_url }}' defer></script>
   </head>
 
   <body class='gradient'>

@@ -37,11 +37,13 @@
                   </a>
                 {%- endif -%}
                 <div class='footer-v14__description'>{{ block.settings.description }}</div>
-                <ul role='list' class='footer-v14__information list-unstyled'>
-                  <li>{{ block.settings.address }}</li>
-                  <li>{{ block.settings.email }}</li>
-                  <li>{{ block.settings.phone }}</li>
-                </ul>
+                {%- if block.settings.address != blank or block.settings.email != blank or block.settings.phone != blank -%}
+                  <ul role='list' class='footer-v14__information list-unstyled'>
+                    {%- if block.settings.address != blank -%}<li>{{ block.settings.address }}</li>{%- endif -%}
+                    {%- if block.settings.email != blank -%}<li>{{ block.settings.email }}</li>{%- endif -%}
+                    {%- if block.settings.phone != blank -%}<li>{{ block.settings.phone }}</li>{%- endif -%}
+                  </ul>
+                {%- endif -%}
               </xo-animate>
             {% when 'menu' %}
               <xo-animate xo-cascade style='--xs: 12; --md: 4; --lg: 2'>
@@ -108,18 +110,15 @@
                 {%- endif -%}
                 {%- if block.settings.show_social -%}
                   <ul role='list' class='footer-v14__social list-unstyled'>
-                    <li>
-                      <a href='{{block.settings.social_link1}}' class='footer-v14__social-link' target='_blank'>{{ block.settings.social_icon1 }}</a>
-                    </li>
-                    <li>
-                      <a href='{{block.settings.social_link2}}' class='footer-v14__social-link' target='_blank'>{{ block.settings.social_icon2 }}</a>
-                    </li>
-                    <li>
-                      <a href='{{block.settings.social_link3}}' class='footer-v14__social-link' target='_blank'>{{ block.settings.social_icon3 }}</a>
-                    </li>
-                    <li>
-                      <a href='{{block.settings.social_link4}}' class='footer-v14__social-link' target='_blank'>{{ block.settings.social_icon4 }}</a>
-                    </li>
+                    {%- for i in (1..4) -%}
+                      {%- assign icon_key = 'social_icon' | append: i -%}
+                      {%- assign link_key = 'social_link' | append: i -%}
+                      {%- if block.settings[icon_key] != blank -%}
+                        <li>
+                          <a href='{{ block.settings[link_key] }}' class='footer-v14__social-link' target='_blank' rel='noopener'>{{ block.settings[icon_key] }}</a>
+                        </li>
+                      {%- endif -%}
+                    {%- endfor -%}
                   </ul>
                 {%- endif -%}
               </xo-animate>
@@ -134,9 +133,7 @@
         {% if section.settings.copyright != blank %}
           {{- section.settings.copyright -}}
         {% else %}
-          <small class='footer-v14__copyright-content'>&copy; Copyright {{ 'now' | date: '%Y' }} | {{ shop.name | escape | link_to: routes.root_url -}}</small>
-          <small class='footer-v14__copyright-content'> By <a class='footer-v14__copyright-shopilaunch' href='https://shopilaunch.com/'> ShopiLaunch.</a> </small>
-          <small class='footer-v14__copyright-content footer-v14__copyright-content--black'>{{ powered_by_link }}.</small>
+          <small class='footer-v14__copyright-content'>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape | link_to: routes.root_url }}. All rights reserved.</small>
         {% endif %}
       </div>
       <div class='footer-v14__payment'>

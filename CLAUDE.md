@@ -30,6 +30,12 @@ Rules:
 - The local content JSON files in this repo may be STALE. Never trust them as
   the current state of the store; read them only as a reference for structure.
 
+## Dev theme needs content seeded
+Because content JSON is ignored, a fresh development theme has no templates
+and `npm run dev` shows a 404. `npm run content:seed-dev` pulls live content
+and pushes it to the development theme only (never live). Re-run it to
+refresh the dev preview after editor changes on the live theme.
+
 ## Visual checks
 Dev server runs at http://127.0.0.1:9292. Screenshot via headless Chrome
 over the DevTools protocol (plain --screenshot hangs on the dev server).

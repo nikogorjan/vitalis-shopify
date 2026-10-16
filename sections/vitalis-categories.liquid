@@ -1,0 +1,317 @@
+<div class='vitalis-categories' style='--vc-pt: {{ section.settings.padding_top }}; --vc-pb: {{ section.settings.padding_bottom }};'>
+  <xo-container {% render 'section-layout' %}>
+    {%- if section.settings.subtitle != blank or section.settings.title != blank -%}
+      <div class='vitalis-categories__header'>
+        {%- if section.settings.subtitle != blank -%}
+          <p class='vitalis-categories__subtitle'>{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class='vitalis-categories__heading'>{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <ul class='vitalis-categories__grid' role='list' style='--vc-columns: {{ section.settings.columns }};'>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign collection = block.settings.collection
+          assign title = block.settings.title | default: collection.title
+          assign image = block.settings.image | default: collection.image | default: collection.products.first.featured_media.preview_image
+        -%}
+        <li class='vitalis-categories__item' {{ block.shopify_attributes }}>
+          <a
+            {% if collection != blank %}
+              href='{{ collection.url }}'
+            {% endif %}
+            class='vitalis-categories__card'
+          >
+            <div class='vitalis-categories__media'>
+              {%- if image != blank -%}
+                {{
+                  image
+                  | image_url: width: 900
+                  | image_tag:
+                    widths: '300, 450, 600, 900',
+                    sizes: '(min-width: 990px) 30vw, 48vw',
+                    loading: 'lazy',
+                    alt: title
+                    | escape
+                }}
+              {%- else -%}
+                {{ 'collection-1' | placeholder_svg_tag: 'vitalis-categories__placeholder' }}
+              {%- endif -%}
+            </div>
+            <div class='vitalis-categories__info'>
+              <h3 class='vitalis-categories__title'>{{ title | default: 'Category' | escape }}</h3>
+              <div class='vitalis-categories__meta'>
+                {%- if collection != blank and section.settings.show_count -%}
+                  <span class='vitalis-categories__count'>
+                    {{- collection.products_count }}
+                    {% if collection.products_count == 1 %}{{ section.settings.product_label | escape }}{% else %}{{ section.settings.products_label | escape }}{% endif -%}
+                  </span>
+                {%- endif -%}
+                <span class='vitalis-categories__link'>{{ section.settings.link_label | escape }}</span>
+              </div>
+            </div>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </xo-container>
+</div>
+
+{% stylesheet %}
+  .vitalis-categories {
+    padding-top: calc(var(--vc-pt) * 0.6px);
+    padding-bottom: calc(var(--vc-pb) * 0.6px);
+  }
+
+  @media (min-width: 768px) {
+    .vitalis-categories {
+      padding-top: calc(var(--vc-pt) * 1px);
+      padding-bottom: calc(var(--vc-pb) * 1px);
+    }
+  }
+
+  .vitalis-categories__header {
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  .vitalis-categories__subtitle {
+    margin: 0 0 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #8f7a4e;
+  }
+
+  .vitalis-categories__heading {
+    margin: 0;
+    font-family: var(--font-custom-family);
+    font-weight: var(--font-custom-weight, 700);
+    font-size: clamp(2.8rem, 2.4vw + 1.6rem, 4.8rem);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .vitalis-categories__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.2rem 1.2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 990px) {
+    .vitalis-categories__grid {
+      grid-template-columns: repeat(var(--vc-columns, 3), minmax(0, 1fr));
+      gap: 5rem 2.4rem;
+    }
+  }
+
+  .vitalis-categories__card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .vitalis-categories__media {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background-color: #f5f3ee;
+  }
+
+  .vitalis-categories__media img,
+  .vitalis-categories__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+
+  .vitalis-categories__placeholder {
+    fill: rgba(13, 13, 15, 0.2);
+  }
+
+  .vitalis-categories__card:hover .vitalis-categories__media img {
+    transform: scale(1.04);
+  }
+
+  .vitalis-categories__info {
+    padding-top: 1.6rem;
+  }
+
+  .vitalis-categories__title {
+    margin: 0 0 0.8rem;
+    font-family: var(--font-custom-family);
+    font-weight: var(--font-custom-weight, 700);
+    font-size: clamp(1.5rem, 0.6vw + 1.3rem, 2rem);
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .vitalis-categories__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.4rem 1.2rem;
+  }
+
+  .vitalis-categories__count {
+    font-size: 1.3rem;
+    color: rgba(var(--color-foreground), 0.6);
+  }
+
+  .vitalis-categories__link {
+    position: relative;
+    padding-bottom: 0.4rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .vitalis-categories__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.2rem;
+    background-color: #dcc28a;
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .vitalis-categories__card:hover .vitalis-categories__link::after {
+    transform: scaleX(0.4);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Shop by category",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Explore the range"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Shop by category"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns on desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "show_count",
+      "label": "Show product count",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "product_label",
+      "label": "\"product\" label (singular)",
+      "default": "product"
+    },
+    {
+      "type": "text",
+      "id": "products_label",
+      "label": "\"products\" label (plural)",
+      "default": "products"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Shop"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:sections.all.width.label",
+      "default": "box",
+      "options": [
+        { "value": "box", "label": "t:sections.all.width.options__1.label" },
+        { "value": "wide", "label": "t:sections.all.width.options__2.label" },
+        { "value": "fullwidth", "label": "t:sections.all.width.options__3.label" }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "fullwidth_margin",
+      "label": "t:sections.all.fullwidth_margin.label",
+      "default": 0,
+      "visible_if": "{{ section.settings.width == 'fullwidth' }}"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 100
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Defaults to the collection title."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Defaults to the collection image, or its first product."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by category",
+      "blocks": [
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" }
+      ]
+    }
+  ]
+}
+{% endschema %}

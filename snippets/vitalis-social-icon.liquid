@@ -1,0 +1,17 @@
+{%- comment -%}
+  Renders a social icon (currentColor, 1em).
+
+  Accepts:
+  - name: {String} 'instagram', 'facebook' or 'x'
+
+  Usage:
+  {% render 'vitalis-social-icon', name: 'instagram' %}
+{%- endcomment -%}
+{%- case name -%}
+  {%- when 'instagram' -%}
+    <svg aria-hidden='true' focusable='false' viewBox='0 0 24 24' width='1em' height='1em' fill='none' stroke='currentColor' stroke-width='2'><rect x='2.5' y='2.5' width='19' height='19' rx='5'/><circle cx='12' cy='12' r='4.3'/><circle cx='17.6' cy='6.4' r='1.2' fill='currentColor' stroke='none'/></svg>
+  {%- when 'facebook' -%}
+    <svg aria-hidden='true' focusable='false' viewBox='0 0 24 24' width='1em' height='1em' fill='currentColor'><path d='M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22h3.4z'/></svg>
+  {%- when 'x' -%}
+    <svg aria-hidden='true' focusable='false' viewBox='0 0 24 24' width='1em' height='1em' fill='currentColor'><path d='M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78L17.75 3zm-1.08 16.18h1.7L7.4 4.73H5.58l11.09 14.45z'/></svg>
+{%- endcase -%}

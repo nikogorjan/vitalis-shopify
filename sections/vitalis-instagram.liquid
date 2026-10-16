@@ -1,0 +1,257 @@
+{%- comment -%}
+  Static Instagram row: your own images, each linking to the Instagram
+  profile. (The theme's instagram-v1 needs an Instagram API token.)
+{%- endcomment -%}
+<div class='vitalis-instagram' style='--vi-pt: {{ section.settings.padding_top }}; --vi-pb: {{ section.settings.padding_bottom }};'>
+  <xo-container {% render 'section-layout' %}>
+    {%- if section.settings.subtitle != blank or section.settings.title != blank -%}
+      <div class='vitalis-instagram__header'>
+        {%- if section.settings.subtitle != blank -%}
+          <p class='vitalis-instagram__subtitle'>{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class='vitalis-instagram__title'>
+            {%- if section.settings.link != blank -%}
+              <a href='{{ section.settings.link }}' target='_blank' rel='noopener'>{{ section.settings.title | escape }}</a>
+            {%- else -%}
+              {{ section.settings.title | escape }}
+            {%- endif -%}
+          </h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <ul class='vitalis-instagram__grid' role='list' style='--vi-columns: {{ section.blocks.size }};'>
+      {%- for block in section.blocks -%}
+        {%- assign link = block.settings.link | default: section.settings.link -%}
+        <li class='vitalis-instagram__item' {{ block.shopify_attributes }}>
+          <a
+            {% if link != blank %}
+              href='{{ link }}' target='_blank' rel='noopener'
+            {% endif %}
+            class='vitalis-instagram__link'
+            aria-label='{{ section.settings.title | default: 'Instagram' | escape }}'
+          >
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 800
+                | image_tag:
+                  widths: '300, 400, 600, 800',
+                  sizes: '(min-width: 990px) 16vw, 32vw',
+                  loading: 'lazy',
+                  alt: block.settings.image.alt
+                  | escape
+              }}
+            {%- else -%}
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'vitalis-instagram__placeholder' }}
+            {%- endif -%}
+            <span class='vitalis-instagram__overlay' aria-hidden='true'>
+              {% render 'icon', name: 'instagram', icon_size: '28', color: '#ffffff' %}
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </xo-container>
+</div>
+
+{% stylesheet %}
+  .vitalis-instagram {
+    padding-top: calc(var(--vi-pt) * 0.6px);
+    padding-bottom: calc(var(--vi-pb) * 0.6px);
+  }
+
+  @media (min-width: 768px) {
+    .vitalis-instagram {
+      padding-top: calc(var(--vi-pt) * 1px);
+      padding-bottom: calc(var(--vi-pb) * 1px);
+    }
+  }
+
+  .vitalis-instagram__header {
+    margin-bottom: 3.2rem;
+    text-align: center;
+  }
+
+  .vitalis-instagram__subtitle {
+    margin: 0 0 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #8f7a4e;
+  }
+
+  .vitalis-instagram__title {
+    margin: 0;
+    font-family: var(--font-custom-family);
+    font-weight: var(--font-custom-weight, 700);
+    font-size: clamp(2.4rem, 1.6vw + 1.6rem, 3.6rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .vitalis-instagram__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .vitalis-instagram__title a:hover {
+    text-decoration: underline;
+    text-decoration-color: #dcc28a;
+    text-decoration-thickness: 0.2rem;
+    text-underline-offset: 0.6rem;
+  }
+
+  /* 3 columns (2 rows) on mobile, one row on desktop, with gaps. */
+  .vitalis-instagram__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 990px) {
+    .vitalis-instagram__grid {
+      grid-template-columns: repeat(var(--vi-columns, 6), minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+  }
+
+  .vitalis-instagram__link {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background-color: #0d0d0f;
+  }
+
+  .vitalis-instagram__link img,
+  .vitalis-instagram__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+
+  .vitalis-instagram__placeholder {
+    background-color: #1b1b1f;
+    fill: rgba(255, 255, 255, 0.15);
+  }
+
+  .vitalis-instagram__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(13, 13, 15, 0.45);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .vitalis-instagram__link:hover .vitalis-instagram__overlay,
+  .vitalis-instagram__link:focus-visible .vitalis-instagram__overlay {
+    opacity: 1;
+  }
+
+  .vitalis-instagram__link:hover img {
+    transform: scale(1.05);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Instagram row",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Follow us"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "@vitalis"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Instagram profile link",
+      "info": "e.g. https://www.instagram.com/yourprofile"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:sections.all.width.label",
+      "default": "box",
+      "options": [
+        { "value": "box", "label": "t:sections.all.width.options__1.label" },
+        { "value": "wide", "label": "t:sections.all.width.options__2.label" },
+        { "value": "fullwidth", "label": "t:sections.all.width.options__3.label" }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "fullwidth_margin",
+      "label": "t:sections.all.fullwidth_margin.label",
+      "default": 0,
+      "visible_if": "{{ section.settings.width == 'fullwidth' }}"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 80
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Shown square."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional. Defaults to the Instagram profile link."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram row",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}
