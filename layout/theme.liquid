@@ -86,54 +86,7 @@
         render 'button', link: '#xo-main-content', class: 'xo-skip-to-content xo-visually-hidden', text: button_text
       %}
 
-      {%- if template contains 'index' or template contains 'home' -%}
-        {%- if settings.header_style == 'default' -%}
-          {%- assign header = 'header-v1' %}
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- if template contains 'home-2' -%}
-        {%- if settings.header_style == 'default' -%}
-          {%- assign header = 'header-v2' %}
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- if template contains 'home-3' -%}
-        {%- if settings.header_style == 'default' -%}
-          {%- assign header = 'header-v3' %}
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- if template contains 'home-4' -%}
-        {%- if settings.header_style == 'default' -%}
-          {%- assign header = 'header-v4' %}
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- if template contains 'home-5' -%}
-        {%- if settings.header_style == 'default' -%}
-          {%- assign header = 'header-v5' %}
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- if settings.header_style != 'default' -%}
-        {%- assign header = settings.header_style %}
-      {%- endif -%}
-
-      {% case header %}
-        {% when 'header-v1' %}
-          {% sections 'header-group' %}
-        {% when 'header-v2' %}
-          {% sections 'header2-group' %}
-        {% when 'header-v3' %}
-          {% sections 'header3-group' %}
-        {% when 'header-v4' %}
-          {% sections 'header4-group' %}
-        {% when 'header-v5' %}
-          {% sections 'header5-group' %}
-        {%- else -%}
-          {% sections 'header-group' %}
-      {% endcase %}
+      {% sections 'header-group' %}
 
       <main
         id='xo-main-content'
@@ -144,54 +97,7 @@
         {{ content_for_layout }}
       </main>
 
-      {%- if template contains 'index' or template contains 'home' -%}
-        {%- if settings.footer_style == 'default' -%}
-          {%- assign footer = 'footer-v1' %}
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- if template contains 'home-2' -%}
-        {%- if settings.footer_style == 'default' -%}
-          {%- assign footer = 'footer-v2' %}
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- if template contains 'home-3' -%}
-        {%- if settings.footer_style == 'default' -%}
-          {%- assign footer = 'footer-v3' %}
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- if template contains 'home-4' -%}
-        {%- if settings.footer_style == 'default' -%}
-          {%- assign footer = 'footer-v4' %}
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- if template contains 'home-5' -%}
-        {%- if settings.footer_style == 'default' -%}
-          {%- assign footer = 'footer-v5' %}
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- if settings.footer_style != 'default' -%}
-        {%- assign footer = settings.footer_style %}
-      {%- endif -%}
-
-      {% case footer %}
-        {% when 'footer-v1' %}
-          {% sections 'footer-group' %}
-        {% when 'footer-v2' %}
-          {% sections 'footer2-group' %}
-        {% when 'footer-v3' %}
-          {% sections 'footer3-group' %}
-        {% when 'footer-v4' %}
-          {% sections 'footer4-group' %}
-        {% when 'footer-v5' %}
-          {% sections 'footer5-group' %}
-        {%- else -%}
-          {% sections 'footer-group' %}
-      {% endcase %}
+      {% sections 'footer-group' %}
 
       {% sections 'overlay-group' %}
       {% sections 'popup-group' %}
