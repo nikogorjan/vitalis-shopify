@@ -245,6 +245,20 @@ a[href*='/pages/wishlist'] {
   display: none !important;
 }
 
+/* Sticky footer: on short pages (legal pages, empty cart, search with no
+   results) the main content grows so the footer sits at the bottom of the
+   window instead of in the middle of the screen. */
+#xo-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+#xo-main-content {
+  flex: 1 0 auto;
+}
+
 /* Cart count badge: brand gold with dark text (header + mobile toolbar). */
 .header-v14__cart-count,
 .toolbar__cart-count {
