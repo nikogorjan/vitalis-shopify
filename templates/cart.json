@@ -12,6 +12,20 @@
     "main-page-heading": {
       "type": "main-page-heading",
       "settings": {
+        "title_tag": "h1",
+        "title": "",
+        "description": "",
+        "align": "center",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 50,
         "padding_bottom": 0
       }
@@ -25,7 +39,9 @@
         },
         "note": {
           "type": "note",
-          "settings": {}
+          "settings": {
+            "type": "regular"
+          }
         },
         "subtotal": {
           "type": "subtotal",
@@ -33,9 +49,7 @@
         },
         "badge": {
           "type": "badge",
-          "settings": {
-            "badge_image": "shopify://shop_images/payment_methods_940a3571-dee7-40.png"
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -45,17 +59,40 @@
         "badge"
       ],
       "settings": {
-        "padding_top": 20
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "background_margin": 0,
+        "padding_top": 20,
+        "padding_bottom": 50
       }
     },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
         "heading_title": "You May Also Like",
-        "collection": "best-seller",
+        "heading_align": "center",
+        "collection": "top-rating",
+        "limit": 12,
         "columns_desktop": 4,
         "columns_mobile": "2",
+        "show_navigation": true,
+        "show_navigation_mobile": false,
+        "show_pagination": true,
+        "show_pagination_mobile": false,
+        "distinct_color_scheme": false,
+        "product_card_color_scheme": "",
         "color_scheme": "background-1",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 36,
         "padding_bottom": 36
       }

@@ -30,6 +30,19 @@ Rules:
 - The local content JSON files in this repo may be STALE. Never trust them as
   the current state of the store; read them only as a reference for structure.
 
+## Going live
+- Code: `npm run push:live` (live theme, default env, so content JSON is
+  ignored and `--nodelete` keeps remote-only files). Always ask first.
+- Content lives in the live theme editor. Since 2026-10-16 the live theme has
+  all editor content; edit content there, not in the dev theme editor.
+- Before risky live changes, back up: `shopify theme duplicate --theme
+  166250414178 --name "aqmoi-home-2 backup <date>" --force`.
+- If content was edited in the dev editor, copy it to live per file: pull the
+  dev files into a scratch folder, diff against live (check live has no newer
+  edits), then `shopify theme push --theme 166250414178 --nodelete
+  --allow-live --path <scratch> --only <files>`. Never push
+  templates/product.vitalis-preview.json (dev-only preview template).
+
 ## Dev theme needs content seeded
 Because content JSON is ignored, a fresh development theme has no templates
 and `npm run dev` shows a 404. `npm run content:seed-dev` pulls live content

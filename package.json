@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "shopify theme dev",
     "push": "shopify theme push --development --nodelete",
+    "push:live": "shopify theme push --live --nodelete --allow-live",
     "pull": "shopify theme pull --development",
     "content:pull": "shopify theme pull -e content --live --only templates/*.json --only templates/customers/*.json --only sections/*.json --only config/settings_data.json --force",
     "content:seed-dev": "npm run content:pull && shopify theme push -e content --development --nodelete --only templates/*.json --only templates/customers/*.json --only sections/*.json --only config/settings_data.json",
