@@ -24,7 +24,7 @@
         "logo_desktop_width": 160,
         "logo_mobile": "shopify://shop_images/champagne-transparent_4096px.png",
         "logo_mobile_width": 100,
-        "menu": "",
+        "menu": "main-menu",
         "menu_type": "default",
         "event_type": "hover",
         "hamburger_type": "drawer",
@@ -94,7 +94,8 @@
         "background_margin": 0,
         "padding_top": 50,
         "padding_bottom": 50
-      }
+      },
+      "disabled": true
     },
     "mega-menu-v2": {
       "type": "mega-menu-v2",
@@ -125,7 +126,8 @@
         "background_margin": 0,
         "padding_top": 50,
         "padding_bottom": 50
-      }
+      },
+      "disabled": true
     },
     "mega-menu-v3": {
       "type": "mega-menu-v3",
@@ -157,7 +159,8 @@
         "background_margin": 0,
         "padding_top": 50,
         "padding_bottom": 50
-      }
+      },
+      "disabled": true
     },
     "mega-menu-v4": {
       "type": "mega-menu-v4",
@@ -186,7 +189,8 @@
         "background_margin": 0,
         "padding_top": 50,
         "padding_bottom": 50
-      }
+      },
+      "disabled": true
     },
     "vitalis-announcement": {
       "type": "vitalis-announcement",

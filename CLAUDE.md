@@ -1,7 +1,7 @@
-# Vitalis Shopify theme (aqmoi-home-2)
+# Vitalis Shopify theme (based on Aqmoi)
 
 Store: 0ck7y0-dz.myshopify.com
-Live theme: aqmoi-home-2 (#166250414178). Never push to live without asking.
+Live theme: "Vitalis" (#166250414178, renamed from aqmoi-home-2 on 2026-10-16). Never push to live without asking.
 
 ## Content JSON is owned by the theme editor. Do not touch it casually.
 
@@ -36,7 +36,7 @@ Rules:
 - Content lives in the live theme editor. Since 2026-10-16 the live theme has
   all editor content; edit content there, not in the dev theme editor.
 - Before risky live changes, back up: `shopify theme duplicate --theme
-  166250414178 --name "aqmoi-home-2 backup <date>" --force`.
+  166250414178 --name "Vitalis backup <date>" --force`.
 - If content was edited in the dev editor, copy it to live per file: pull the
   dev files into a scratch folder, diff against live (check live has no newer
   edits), then `shopify theme push --theme 166250414178 --nodelete

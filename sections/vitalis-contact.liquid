@@ -1,0 +1,553 @@
+{%- assign form_id = 'VitalisContact-' | append: section.id -%}
+
+<div class='vitalis-contact'>
+  <div class='vitalis-contact__hero'>
+    <xo-container {% render 'section-layout' %}>
+      {%- if section.settings.subtitle != blank -%}
+        <p class='vitalis-contact__eyebrow'>{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+      <h1 class='vitalis-contact__heading'>{{ section.settings.title | default: page.title | escape }}</h1>
+      {%- if section.settings.intro != blank -%}
+        <div class='vitalis-contact__intro'>{{ section.settings.intro }}</div>
+      {%- endif -%}
+    </xo-container>
+  </div>
+
+  <div class='vitalis-contact__body'>
+    <xo-container {% render 'section-layout' %}>
+      <div class='vitalis-contact__grid'>
+        <div class='vitalis-contact__info'>
+          {%- if section.settings.info_title != blank -%}
+            <h2 class='vitalis-contact__title'>{{ section.settings.info_title | escape }}</h2>
+          {%- endif -%}
+          {%- if section.settings.info_text != blank -%}
+            <div class='vitalis-contact__text'>{{ section.settings.info_text }}</div>
+          {%- endif -%}
+
+          {%- capture details -%}
+            {%- if section.settings.email != blank -%}
+              <div class='vitalis-contact__detail'>
+                <dt>{{ section.settings.email_label | escape }}</dt>
+                <dd><a href='mailto:{{ section.settings.email | strip }}'>{{ section.settings.email | escape }}</a></dd>
+              </div>
+            {%- endif -%}
+            {%- if section.settings.phone != blank -%}
+              <div class='vitalis-contact__detail'>
+                <dt>{{ section.settings.phone_label | escape }}</dt>
+                <dd><a href='tel:{{ section.settings.phone | remove: ' ' }}'>{{ section.settings.phone | escape }}</a></dd>
+              </div>
+            {%- endif -%}
+            {%- if section.settings.address != blank -%}
+              <div class='vitalis-contact__detail'>
+                <dt>{{ section.settings.address_label | escape }}</dt>
+                <dd>{{ section.settings.address | escape | newline_to_br }}</dd>
+              </div>
+            {%- endif -%}
+            {%- if section.settings.hours != blank -%}
+              <div class='vitalis-contact__detail'>
+                <dt>{{ section.settings.hours_label | escape }}</dt>
+                <dd>{{ section.settings.hours | escape | newline_to_br }}</dd>
+              </div>
+            {%- endif -%}
+          {%- endcapture -%}
+          {%- if details != blank -%}
+            <dl class='vitalis-contact__details'>{{ details }}</dl>
+          {%- endif -%}
+
+          {%- if section.settings.instagram_link != blank or section.settings.facebook_link != blank or section.settings.x_link != blank -%}
+            <div class='vitalis-contact__social'>
+              <p class='vitalis-contact__label'>{{ section.settings.social_label | escape }}</p>
+              <ul role='list'>
+                {%- assign networks = 'instagram,facebook,x' | split: ',' -%}
+                {%- assign labels = 'Instagram,Facebook,X' | split: ',' -%}
+                {%- for key in networks -%}
+                  {%- assign setting = key | append: '_link' -%}
+                  {%- if section.settings[setting] != blank -%}
+                    <li>
+                      <a href='{{ section.settings[setting] }}' target='_blank' rel='noopener' aria-label='{{ labels[forloop.index0] }}'>
+                        {%- render 'vitalis-social-icon', name: key -%}
+                      </a>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class='vitalis-contact__form-wrap'>
+          {%- if section.settings.form_title != blank -%}
+            <h2 class='vitalis-contact__title'>{{ section.settings.form_title | escape }}</h2>
+          {%- endif -%}
+
+          {%- form 'contact', id: form_id, class: 'vitalis-contact__form' -%}
+            {%- if form.posted_successfully? -%}
+              <p class='vitalis-contact__message vitalis-contact__message--success' id='{{ form_id }}-success' tabindex='-1' autofocus>
+                {{ section.settings.success_message | escape }}
+              </p>
+            {%- else -%}
+              {%- if form.errors -%}
+                <div class='vitalis-contact__message vitalis-contact__message--error' id='{{ form_id }}-error' role='alert'>
+                  {{ form.errors | default_errors }}
+                </div>
+              {%- endif -%}
+
+              <div class='vitalis-contact__row'>
+                <div class='vitalis-contact__field'>
+                  <label for='{{ form_id }}-name'>{{ 'templates.contact.form.name' | t }}</label>
+                  <input id='{{ form_id }}-name' type='text' name='contact[{{ 'templates.contact.form.name' | t }}]' value='{{ form.name }}' autocomplete='name'>
+                </div>
+                <div class='vitalis-contact__field'>
+                  <label for='{{ form_id }}-email'>{{ 'templates.contact.form.email' | t }} *</label>
+                  <input id='{{ form_id }}-email' type='email' name='contact[email]' value='{{ form.email }}' autocomplete='email' autocapitalize='off' spellcheck='false' required aria-required='true'>
+                </div>
+              </div>
+              <div class='vitalis-contact__field'>
+                <label for='{{ form_id }}-phone'>{{ 'templates.contact.form.phone' | t }}</label>
+                <input id='{{ form_id }}-phone' type='tel' name='contact[{{ 'templates.contact.form.phone' | t }}]' value='{{ form.phone }}' autocomplete='tel' pattern='[0-9\-\+\s\(\)]*'>
+              </div>
+              <div class='vitalis-contact__field'>
+                <label for='{{ form_id }}-body'>{{ 'templates.contact.form.message' | t }} *</label>
+                <textarea id='{{ form_id }}-body' name='contact[body]' rows='6' required aria-required='true'>{{ form.body }}</textarea>
+              </div>
+              <button type='submit' class='vitalis-contact__button'>{{ section.settings.button_label | escape }}</button>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+      </div>
+    </xo-container>
+  </div>
+</div>
+
+{% stylesheet %}
+  /* Dark hero band, in the style of the homepage sections. */
+  .vitalis-contact__hero {
+    padding: 6rem 0 5.6rem;
+    background-color: #0d0d0f;
+    background-image: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(220, 194, 138, 0.12), transparent 70%);
+    color: #fff;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .vitalis-contact__hero {
+      padding: 10rem 0 9rem;
+    }
+  }
+
+  .vitalis-contact__eyebrow {
+    margin: 0 0 1.6rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #dcc28a;
+  }
+
+  .vitalis-contact__heading {
+    margin: 0;
+    font-family: var(--font-custom-family);
+    font-weight: var(--font-custom-weight, 700);
+    font-size: clamp(3.2rem, 3vw + 2rem, 6rem);
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .vitalis-contact__intro {
+    max-width: 60rem;
+    margin: 2rem auto 0;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .vitalis-contact__intro p {
+    margin: 0;
+  }
+
+  .vitalis-contact__body {
+    padding: 5.6rem 0 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .vitalis-contact__body {
+      padding: 10rem 0 4rem;
+    }
+  }
+
+  .vitalis-contact__grid {
+    display: grid;
+    gap: 5.6rem;
+  }
+
+  @media (min-width: 990px) {
+    .vitalis-contact__grid {
+      grid-template-columns: 5fr 7fr;
+      gap: clamp(6rem, 7vw, 12rem);
+    }
+  }
+
+  .vitalis-contact__title {
+    margin: 0 0 2rem;
+    font-family: var(--font-custom-family);
+    font-weight: var(--font-custom-weight, 700);
+    font-size: clamp(2.2rem, 1.2vw + 1.8rem, 3rem);
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .vitalis-contact__text {
+    margin-bottom: 3.2rem;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: rgba(var(--color-foreground), 0.7);
+  }
+
+  .vitalis-contact__text p {
+    margin: 0 0 1.2rem;
+  }
+
+  /* Contact details: rows divided by hairlines, gold labels. */
+  .vitalis-contact__details {
+    margin: 0 0 3.6rem;
+    border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  }
+
+  .vitalis-contact__detail {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1.6rem;
+    padding: 1.8rem 0;
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  }
+
+  .vitalis-contact__detail dt,
+  .vitalis-contact__label {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    line-height: 2.2rem;
+    text-transform: uppercase;
+    color: #8f7a4e;
+  }
+
+  .vitalis-contact__detail dd {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+  }
+
+  .vitalis-contact__detail a {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(#dcc28a, #dcc28a);
+    background-size: 100% 0.1rem;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+  }
+
+  .vitalis-contact__social ul {
+    display: flex;
+    gap: 1rem;
+    margin: 1.2rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vitalis-contact__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.4rem;
+    height: 4.4rem;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.25);
+    color: rgb(var(--color-foreground));
+    font-size: 1.6rem;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  .vitalis-contact__social a:hover {
+    background-color: #0d0d0f;
+    border-color: #0d0d0f;
+    color: #dcc28a;
+  }
+
+  /* Form: sharp fields, uppercase labels, gold button. */
+  .vitalis-contact__form {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .vitalis-contact__row {
+    display: grid;
+    gap: 2rem;
+  }
+
+  @media (min-width: 576px) {
+    .vitalis-contact__row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .vitalis-contact__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .vitalis-contact__field label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .vitalis-contact__field input,
+  .vitalis-contact__field textarea {
+    width: 100%;
+    padding: 1.4rem 1.6rem;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+    border-radius: 0;
+    background-color: #fff;
+    color: rgb(var(--color-foreground));
+    font-family: var(--font-body-family);
+    font-size: 1.5rem;
+    transition: border-color 0.3s;
+  }
+
+  .vitalis-contact__field input {
+    height: 5.2rem;
+  }
+
+  .vitalis-contact__field textarea {
+    min-height: 16rem;
+    resize: vertical;
+  }
+
+  .vitalis-contact__field input:focus,
+  .vitalis-contact__field textarea:focus {
+    outline: none;
+    border-color: #dcc28a;
+    box-shadow: 0 0 0 0.1rem #dcc28a;
+  }
+
+  .vitalis-contact__button {
+    justify-self: start;
+    height: 5.2rem;
+    padding: 0 4rem;
+    border: 0;
+    border-radius: 0;
+    background-color: #dcc28a;
+    color: #0d0d0f;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .vitalis-contact__button:hover {
+    background-color: #0d0d0f;
+    color: #dcc28a;
+  }
+
+  .vitalis-contact__button:focus-visible {
+    outline: 0.2rem solid #0d0d0f;
+    outline-offset: 0.2rem;
+  }
+
+  @media (max-width: 575px) {
+    .vitalis-contact__button {
+      justify-self: stretch;
+    }
+  }
+
+  .vitalis-contact__message {
+    margin: 0;
+    padding: 1.6rem 1.8rem;
+    font-size: 1.5rem;
+  }
+
+  .vitalis-contact__message--success {
+    border: 0.1rem solid #dcc28a;
+    background-color: rgba(220, 194, 138, 0.12);
+  }
+
+  .vitalis-contact__message--error {
+    border: 0.1rem solid #c0392b;
+    color: #a0302a;
+  }
+
+  .vitalis-contact__message--error ul {
+    margin: 0.6rem 0 0;
+    padding-left: 2rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Contact page",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Get in touch"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "info": "Defaults to the page title."
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro",
+      "default": "<p>Questions about our products, your order or a partnership? We're happy to help.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Contact details"
+    },
+    {
+      "type": "text",
+      "id": "info_title",
+      "label": "Title",
+      "default": "Customer care"
+    },
+    {
+      "type": "richtext",
+      "id": "info_text",
+      "label": "Text",
+      "default": "<p>Send us a message and we'll reply within 1–2 business days.</p>"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "info": "Rows without a value are hidden."
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address"
+    },
+    {
+      "type": "textarea",
+      "id": "hours",
+      "label": "Opening hours"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "\"Email\" label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "\"Phone\" label",
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "address_label",
+      "label": "\"Address\" label",
+      "default": "Address"
+    },
+    {
+      "type": "text",
+      "id": "hours_label",
+      "label": "\"Hours\" label",
+      "default": "Hours"
+    },
+    {
+      "type": "header",
+      "content": "Social"
+    },
+    {
+      "type": "text",
+      "id": "social_label",
+      "label": "Label",
+      "default": "Follow us"
+    },
+    {
+      "type": "url",
+      "id": "instagram_link",
+      "label": "Instagram"
+    },
+    {
+      "type": "url",
+      "id": "facebook_link",
+      "label": "Facebook"
+    },
+    {
+      "type": "url",
+      "id": "x_link",
+      "label": "X"
+    },
+    {
+      "type": "header",
+      "content": "Form"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Title",
+      "default": "Send us a message"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Send message"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thanks for your message. We'll get back to you within 1–2 business days."
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:sections.all.width.label",
+      "default": "box",
+      "options": [
+        { "value": "box", "label": "t:sections.all.width.options__1.label" },
+        { "value": "wide", "label": "t:sections.all.width.options__2.label" },
+        { "value": "fullwidth", "label": "t:sections.all.width.options__3.label" }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "fullwidth_margin",
+      "label": "t:sections.all.fullwidth_margin.label",
+      "default": 0,
+      "visible_if": "{{ section.settings.width == 'fullwidth' }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact page"
+    }
+  ]
+}
+{% endschema %}

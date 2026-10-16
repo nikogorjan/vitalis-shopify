@@ -163,6 +163,32 @@
   color: var(--vitalis-black);
 }
 
+/* Header on desktop: logo left, menu centered in the remaining space, icons
+   right (the theme uses three equal columns with the logo in the middle).
+   Below 1200px the theme's hamburger / centered logo layout stays. */
+@media (min-width: 1200px) {
+  /* Must outrank the theme's xo-grid:not([style*=...])[style*="--xs"]. */
+  .header-v14 xo-grid[style][style] {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    column-gap: 4rem;
+  }
+
+  /* The theme orders grid children with --order-xl from 1200px up. */
+  .header-v14__logo {
+    --order-xl: -1;
+    justify-content: flex-start;
+  }
+
+  .header-v14__navigation {
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .header-v14__navigation-desktop {
+    width: auto;
+  }
+}
+
 /* Cart count badge: brand gold with dark text (header + mobile toolbar). */
 .header-v14__cart-count,
 .toolbar__cart-count {
