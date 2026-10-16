@@ -259,6 +259,19 @@ a[href*='/pages/wishlist'] {
   flex: 1 0 auto;
 }
 
+/* Shopify's express checkout buttons (Buy with Shop, PayPal, Google Pay...)
+   on product pages and in the cart: same height as Add to cart, sharp. */
+shopify-accelerated-checkout,
+shopify-accelerated-checkout-cart {
+  --shopify-accelerated-checkout-button-block-size: 50px;
+  --shopify-accelerated-checkout-button-border-radius: 0px;
+}
+
+/* Quantity selectors (− 1 +) on product page, cart and drawer: sharp. */
+[class*='xo-quantity-style'] {
+  border-radius: 0;
+}
+
 /* Cart count badge: brand gold with dark text (header + mobile toolbar). */
 .header-v14__cart-count,
 .toolbar__cart-count {
